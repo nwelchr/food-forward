@@ -12,6 +12,11 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
+      console.log('opwjefpojwefpojwepofjwe');
+      console.log(req.user);
+      if (req.user.googleId === '117028808660169665117') {
+        return res.redirect('/non_profit_dashboard');
+      }
       res.redirect('/blogs');
     }
   );
