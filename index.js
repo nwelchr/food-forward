@@ -6,13 +6,17 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
 require('./models/User');
+require('./models/Nonprofit');
 require('./models/Blog');
 require('./models/Nonprofit');
 require('./models/Item');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI, { useMongoClient: true });
+mongoose.connect(
+  keys.mongoURI,
+  { useMongoClient: true }
+);
 
 const app = express();
 
