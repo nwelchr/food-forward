@@ -3,7 +3,6 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   name: String,
-  price: Number,
   image: String,
   quota: Number,
   amtRaised: Number,
