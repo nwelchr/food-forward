@@ -91,79 +91,69 @@ class Company extends React.Component {
           <div> Company Name </div>
           <div> + </div>
         </nav>
-        <div className="product-image-upload">
-          <h1>Photo:</h1>
-          <Dropzone
-            multiple={false}
-            accept="image/*"
-            onDrop={this.onImageDrop.bind(this)}>
-            <div className="drop-zone-instructions">
-              <div>Add a Primary Photo</div>
-              <div>Drop an image or click to select a file to upload.</div>
-              <br />
-              <i className="fa fa-camera" aria-hidden="true" />
-            </div>
-          </Dropzone>
-          <div>
-            <strong>OR</strong> paste an image URL:
-            <input
-              type="text"
-              value={this.state.inputImageUrl}
-              onChange={this.update('inputImageUrl')}
-            />
-          </div>
-          <div>
-            {this.state.uploadImageUrl === '' ? null : (
-              <div className="image-upload">
-                <div>
-                  <img src={this.state.uploadImageUrl} />
-                </div>
-                {this.props.formType === 'Create A Product' ? (
-                  <div>{this.state.uploadedFile.name}</div>
-                ) : null}
+        <div className="product-constructor">
+          <div className="product-image-upload">
+            <h1>Photo:</h1>
+            <Dropzone
+              multiple={false}
+              accept="image/*"
+              onDrop={this.onImageDrop.bind(this)}>
+              <div className="drop-zone-instructions">
+                <div>Add a Primary Photo</div>
+                <div>Drop an image or click to select a file to upload.</div>
+                <br />
+                <i className="fa fa-camera-retro" aria-hidden="true"></i>
               </div>
-            )}
+            </Dropzone>
+              <div>
+                {this.state.image_url === '' ? null : (
+                  <div className="image-upload">
+                    <div>
+                      <img src={this.state.image_url} />
+                    </div>
+                    {this.props.formType === 'Create A Product' ? (
+                      <div>{this.state.uploadedFile.name}</div>
+                    ) : null}
+                  </div>
+                )}
+              </div>
+            </div>
+            <form className="itemForm" onSubmit={this.handleSubmit}>
+              <div className="ItemErros">Errors</div>
+              <label>
+                {/* Item Name: */}
+                <input
+                  className="search"
+                  type="text"
+                  placeholder="Item Name"
+                  onChange={this.update('name')}
+                />
+              </label>
+
+              <label>
+                {/* Quota : */}
+                <input
+                  className="amount"
+                  type="number"
+                  placeholder="Quota"
+                  onCHange={this.update('quota')}
+                />
+              </label>
+
+              <label>
+                {/* Item Cost : */}
+                <input
+                  className="amount"
+                  type="number"
+                  placeholder="Item Cost"
+                  onCHange={this.update('item_cost')}
+                />
+              </label>
+
+              <input type="submit" />
+            </form>
           </div>
-        </div>
-        <form className="itemForm" onSubmit={this.handleSubmit}>
-          <div className="ItemErros">Errors</div>
-          <label>
-            Item Name:
-            <input
-              className="search"
-              type="text"
-              onChange={this.update('name')}
-              value={this.state.name}
-            />
-          </label>
-
-          <label>
-            Quota :
-            <input
-              className="amount"
-              type="number"
-              onChange={this.update('quota')}
-              value={this.state.quota}
-            />
-          </label>
-
-          <label>
-            Item Cost :
-            <input
-              className="amount"
-              type="number"
-              onChange={this.update('cost')}
-              value={this.state.cost}
-            />
-          </label>
-
-          <input type="submit" />
-        </form>
-
-        <ItemIndex
-          deleteNonprofitItem={this.props.deleteNonprofitItem}
-          items={this.props.items}
-        />
+        <ItemIndex items={this.props.items} />
       </div>
     );
   }

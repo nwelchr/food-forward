@@ -40,7 +40,6 @@ class Landing extends React.Component {
                         <p>Sign in with Google</p>
                         <span onClick={() => this.closemodal()} className="close">&times;</span>
                     </div> 
-                    
                     <a href={"/auth/google"}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/200px-Google_%22G%22_Logo.svg.png"/></a>
                 </div>
                 <div onClick={() => this.closemodal()} id="myModal" className="modal"></div>

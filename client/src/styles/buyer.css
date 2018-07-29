@@ -1,0 +1,65 @@
+.buyer-nav {
+    position: sticky; 
+    height: 15vh;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-profile { 
+    margin: 20px 60px; 
+    color: black; 
+    font-size: 2em; 
+}
+
+.cart-icon {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin: 40px 60px;
+    background: url(http://simpleicon.com/wp-content/uploads/Shopping-Cart-9.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer; 
+}
+
+
+
+.cart-icon-circle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+    top: -2px;
+    right: 6px;
+}
+
+
+.cart-icon-number {
+    position: absolute;
+    top: 3px;
+    right: 9px;
+    font-size: 1.4em;
+    color: white;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .cart-icon {
+        margin: 0px 25px; 
+    }
+    .user-profile {
+        margin: 20px 40px; 
+    }
+}
+
+.blur-filter {
+    height: 15vh;
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.08);
+    filter: blur(10px);
+}
