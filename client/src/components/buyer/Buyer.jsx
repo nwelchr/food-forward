@@ -13,6 +13,8 @@ class Buyer extends React.Component {
         this.toggleCheckout = this
             .toggleCheckout
             .bind(this);
+
+        this.changeStateTest = this.changeStateTest.bind(this);
     }
 
     componentDidMount() {
@@ -23,20 +25,40 @@ class Buyer extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        window.clearTimeout();
+    }
+
     toggleCheckout() {
         console.log('toggle');
-        this.setState({
-            checkout: Boolean(!this.state.checkout)
-        });
+        if (this.state.checkout) {
+            const modal = document.getElementsByClassName("checkout-modal")[0];
+            modal.classList.remove("checkout-modal-top");
+            setTimeout(this.changeStateTest, 800);
+        }else{
+            this.setState({checkout: Boolean(!this.state.checkout)});
+        }
+    }
+
+    changeStateTest() {
+        this.setState({checkout: Boolean(!this.state.checkout)});
     }
 
     render() {
         const renderModal = this.state.checkout
-            ? <CheckoutModal/>
+            ? <CheckoutModal />
+            : '';
+
+        const bgModal = this.state.checkout
+            ? <div onClick={this.toggleCheckout} className="bg-modal"></div>
             : '';
 
         const name = this.props.user
             ? this.props.user.displayName
+            : '';
+
+        const logout = this.props.user
+            ? 'Logout'
             : '';
 
         const cartCount = Object
@@ -55,13 +77,13 @@ class Buyer extends React.Component {
             <div>
                 <div className="buyer-nav">
                     <div className="user-profile">{name}</div>
+                    <button className="change-item-button add"><a className="logout-btn" href={'/auth/logout'}> Logout</a> </button>
                     <div onClick={this.toggleCheckout} className="cart-icon">
                         {icon}
                     </div>
-                    <div className="blur-filter"/>
                 </div>
-                {renderModal
-}
+                {renderModal}
+                {bgModal}
                 <BuyerIndexContainer/>
             </div>
         );
