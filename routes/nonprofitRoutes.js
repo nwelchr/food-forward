@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 
 const Nonprofit = mongoose.model('Nonprofit');
-const Blog = mongoose.model('Item');
+const Item = mongoose.model('Item');
 
 const ObjectId = require('mongodb').ObjectID;
 
@@ -50,14 +50,12 @@ module.exports = app => {
   });
 
   app.delete('/api/nonprofits/:id/items', requireLogin, async (req, res) => {
-    const { item } = req.body;
-
-    const itemId = item._id;
+    const { _id } = req.body;
 
     const nonprofit = await Nonprofit.findById(req.params.id);
 
     try {
-      delete nonprofit.items[itemId];
+      delete nonprofit.items[_id];
       await nonprofit.save();
 
       res.send(item);

@@ -2,29 +2,27 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 
 const Nonprofit = mongoose.model('Nonprofit');
-const Blog = mongoose.model('Item');
+const CartItem = mongoose.model('CartItem');
 
 const ObjectId = require('mongodb').ObjectID;
 
 module.exports = app => {
   app.get('/api/users/:id/items', requireLogin, async (req, res) => {
-    const nonprofit = await Nonprofit.findById(req.params.id);
-    const items = nonprofit.items;
-    res.send(items);
+    const user = await User.findById(req.params.id);
+    const cart = nonprofit.cart;
+    res.send(cart);
   });
 
   app.post('/api/users/:id/items', requireLogin, async (req, res) => {
-    const { name, price, image, quota } = req.body;
+    const { nonprofitId, amount, _id } = req.body;
 
-    const nonprofit = await Nonprofit.findById(req.params.id);
+    const user = await User.findById(req.params.id);
 
-    const item = new Item({ name, price, image, quota });
-
-    item._id = new ObjectId();
+    const item = new CartItem({ nonprofitId, amount, _id });
 
     try {
-      nonprofit.items[item._id] = item;
-      await nonprofit.save();
+      user.cart[item._id] = item;
+      await user.save();
 
       res.send(item);
     } catch (err) {
@@ -35,13 +33,11 @@ module.exports = app => {
   app.put('/api/users/:id/items', requireLogin, async (req, res) => {
     const { item } = req.body;
 
-    const itemId = item._id;
-
-    const nonprofit = await Nonprofit.findById(req.params.id);
+    const user = await User.findById(req.params.id);
 
     try {
-      nonprofit.items[itemId] = item;
-      await nonprofit.save();
+      user.cart[_id] = item;
+      await user.save();
 
       res.send(item);
     } catch (err) {
@@ -50,15 +46,13 @@ module.exports = app => {
   });
 
   app.delete('/api/users/:id/items', requireLogin, async (req, res) => {
-    const { item } = req.body;
+    const { _id } = req.body;
 
-    const itemId = item._id;
-
-    const nonprofit = await Nonprofit.findById(req.params.id);
+    const user = await User.findById(req.params.id);
 
     try {
-      delete nonprofit.items[itemId];
-      await nonprofit.save();
+      delete user.cart[_id];
+      await user.save();
 
       res.send(item);
     } catch (err) {
