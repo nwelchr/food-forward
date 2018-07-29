@@ -24,8 +24,6 @@ module.exports = app => {
 
     let newItem = new Item({ name, price, image, quota, _id });
 
-    console.log(newItem._id.constructor.name);
-
     try {
       nonprofit.items = {
         ...nonprofit.items,
