@@ -39,7 +39,7 @@ class ShoppingList extends React.Component {
                     <p>
                         <strong>Food We Do&nbsp;Accept:</strong>
                     </p>
-                    <ul>
+                    <ul className='guideline-list'>
                         <li>Unexpired perishable foods</li>
                         <li>Refrigerated perishable foods (must be below 40°F)</li>
                         <li>Frozen perishable foods (must be below 28°F)</li>
@@ -47,7 +47,7 @@ class ShoppingList extends React.Component {
                     <p>
                         <strong>Food We Do Not Accept:</strong>
                     </p>
-                    <ul>
+                    <ul className='guideline-list'>
                         <li>Vitamins and nutritional aids</li>
                         <li>Pet food</li>
                         <li>Baby formula</li>
