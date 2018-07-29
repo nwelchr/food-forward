@@ -8,7 +8,7 @@ import Landing from './Landing';
 import Dashboard from './Dashboard';
 import BlogNew from './blogs/BlogNew';
 import BlogShow from './blogs/BlogShow';
-import CompanyContainer from "./company_container";
+import CompanyContainer from './company_container';
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +22,8 @@ class App extends Component {
           <div>
             <Header />
             <Switch>
-              <Route path="/org"  component={CompanyContainer} />
+              <Route path="/nonprofit_dashboard" component={CompanyContainer} />
+              <Route path="/user_dashboard" component={UserDashboard} />
               <Route path="/blogs/new" component={BlogNew} />
               <Route exact path="/blogs/:_id" component={BlogShow} />
               <Route path="/blogs" component={Dashboard} />
@@ -35,4 +36,7 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default connect(
+  null,
+  actions
+)(App);
