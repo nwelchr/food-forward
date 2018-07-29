@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_BLOGS, FETCH_BLOG } from './types';
+import { FETCH_USER, FETCH_BLOGS, FETCH_BLOG, RECEIVE_CART } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -31,3 +31,20 @@ export const fetchBlog = id => async dispatch => {
 
   dispatch({ type: FETCH_BLOG, payload: res.data });
 };
+
+export const receiveCart = cart => {
+  type: RECEIVE_CART,
+  cart 
+}
+
+export const fetchCart = id => async dispatch => {
+  const res = await axios.get(`/api/users/${id}/items`)
+
+  dispatch(receiveCart(res.cart));
+}
+
+export const addItem = (id, item) => async dispatch => {
+  const res = await axios.post(`/api/users/${id}/items`, {
+    item
+  })
+}

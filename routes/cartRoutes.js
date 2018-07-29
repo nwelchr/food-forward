@@ -24,7 +24,7 @@ module.exports = app => {
       user.cart[item._id] = item;
       await user.save();
 
-      res.send(item);
+      res.send(user.cart);
     } catch (err) {
       res.send(400, err);
     }
