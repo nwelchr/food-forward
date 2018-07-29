@@ -14,17 +14,19 @@ module.exports = app => {
   });
 
   app.post('/api/users/:id/items', requireLogin, async (req, res) => {
-    const { nonprofitId, amount, _id } = req.body;
+    const { item } = req.body;
+
+    const { nonprofitId, amount, _id } = item;
 
     const user = await User.findById(req.params.id);
 
-    const item = new CartItem({ nonprofitId, amount, _id });
+    const newItem = new CartItem({ nonprofitId, amount, _id });
 
     try {
-      user.cart[item._id] = item;
+      user.cart[newItem._id] = newItem;
       await user.save();
 
-      res.send(item);
+      res.send(newItem);
     } catch (err) {
       res.send(400, err);
     }

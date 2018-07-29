@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
+
+
 import Landing from './Landing.jsx';
-import Dashboard from './Dashboard';
-// import BlogNew from './blogs/BlogNew';
-// import BlogShow from './blogs/BlogShow';
-import CompanyContainer from "./company_container";
+import CompanyContainer from './company_container';
+import UserDashboard from './UserDashboard';
+
 
 class App extends Component {
   componentDidMount() {
@@ -22,8 +23,11 @@ class App extends Component {
           <div>
             {/* <Header /> */}
             <Switch>
-              <Route path="/" component={Landing} /> 
-              <Route path="/org"  component={CompanyContainer} />
+              <Route path="/nonprofit_dashboard" component={CompanyContainer} />
+
+              {/* TIFFANY AND JON JUST CHANGE THIS*/}
+              <Route path="/user_dashboard" component={UserDashboard} />
+              <Route path="/" component={Landing} />
             </Switch>
           </div>
         </BrowserRouter>
@@ -32,4 +36,7 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default connect(
+  null,
+  actions
+)(App);

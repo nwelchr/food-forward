@@ -1,16 +1,26 @@
 import { connect } from 'react-redux';
-// import { fetchItems, updateItem } from '../../actions/castle_actions';
+import {
+  fetchNonprofitItems,
+  createNonprofitItem,
+  updateNonprofitItem,
+  deleteNonprofitItem
+} from '../actions/nonprofit';
 
 import Company from './company';
 
-const mapStateToProps = state => ({
-  // items: state.items,
-  items: {1: {id: 1, name: "banana", cost: 20.00, quota: 500}}
-});
+const mapStateToProps = state => {
+  const userId = state.auth ? state.auth.id : null;
+  return {
+    items: state.nonprofits,
+    userId
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
-  // fetchItems: () => dispatch(fetchItems()),
-  // updateItem: (item) => dispatch(updateItem())
+  fetchNonprofitItems: () => dispatch(fetchNonprofitItems()),
+  createNonprofitItem: (id, item) => dispatch(createNonprofitItem(id, item)),
+  updateNonprofitItem: (id, item) => dispatch(deleteNonprofitItem(id, item)),
+  deleteNonprofitItem: id => dispatch(deleteNonprofitItem(id))
 });
 
 export default connect(

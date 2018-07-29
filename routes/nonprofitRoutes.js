@@ -7,26 +7,28 @@ const Item = mongoose.model('Item');
 const ObjectId = require('mongodb').ObjectID;
 
 module.exports = app => {
-  app.get('/api/nonprofits/:id/items', requireLogin, async (req, res) => {
-    const nonprofit = await Nonprofit.findById(req.params.id);
+  app.get('/api/items', requireLogin, async (req, res) => {
+    const nonprofit = await Nonprofit.findById(req.user._id);
     const items = nonprofit.items;
     res.send(items);
   });
 
-  app.post('/api/nonprofits/:id/items', requireLogin, async (req, res) => {
-    const { name, price, image, quota } = req.body;
+  app.post('/api/items', requireLogin, async (req, res) => {
+    const { item } = req.body;
+
+    const { name, price, image, quota } = item;
 
     const nonprofit = await Nonprofit.findById(req.params.id);
 
-    const item = new Item({ name, price, image, quota });
+    const newItem = new Item({ name, price, image, quota });
 
-    item._id = new ObjectId();
+    newItem._id = new ObjectId();
 
     try {
-      nonprofit.items[item._id] = item;
+      nonprofit.items[newItem._id] = newItem;
       await nonprofit.save();
 
-      res.send(item);
+      res.send(newItem);
     } catch (err) {
       res.send(400, err);
     }

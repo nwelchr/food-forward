@@ -36,4 +36,17 @@ module.exports = app => {
 
     res.send(user);
   });
+
+  app.patch('/api/users/:id/clear_cart', requireLogin, async (req, res) => {
+    const user = await User.findById(req.params.id);
+
+    user.cart = {};
+    try {
+      await user.save();
+    } catch (err) {
+      res.send(err, null);
+    }
+
+    res.send(user);
+  });
 };

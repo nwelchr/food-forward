@@ -11,9 +11,15 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
-  });
+  if (id === '5b5d085560cd313ab45be5a9') {
+    Nonprofit.findById(id).then(user => {
+      done(null, user);
+    });
+  } else {
+    User.findById(id).then(user => {
+      done(null, user);
+    });
+  }
 });
 
 passport.use(
@@ -28,9 +34,11 @@ passport.use(
       try {
         // if the person signing in is the admin
         if (profile.id === '117028808660169665117') {
+          console.log('FINDING NONPROFIT');
           const existingNonprofit = await Nonprofit.findOne({
             googleId: profile.id
           });
+
           if (existingNonprofit) return done(null, existingNonprofit);
 
           const nonprofit = await new Nonprofit({
