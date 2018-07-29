@@ -1,0 +1,27 @@
+.product-constructor {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: space-evenly;
+ height: 400px;
+ width: 350px;
+ margin: 0 auto;
+ background: beige;
+ border-radius: 5px;
+}  
+
+.itemForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemForm input {
+    padding: 5px 35px;
+    border-radius: 1px;
+    border-width: 0.5px;
+    margin: 2px;
+}
+
+input[type="submit"] {
+    margin-top: 15%;
+}
