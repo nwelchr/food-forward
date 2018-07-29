@@ -13,14 +13,15 @@ export const fetchNonprofitItems = () => async dispatch => {
 };
 
 export const createNonprofitItem = item => async dispatch => {
-  console.log(item, 'CREATING NEW ITEM...');
   const res = await axios.post(`/api/items`, item);
-  console.log(res.data, 'NEWLY CREATED ITEM!!!');
   dispatch({ type: RECEIVE_NONPROFIT_ITEM, payload: res.data });
 };
 
 export const updateNonprofitItem = item => async dispatch => {
+  console.log(item);
   const res = await axios.put(`/api/items`, item);
+
+  console.log(res.data);
 
   dispatch({ type: RECEIVE_NONPROFIT_ITEM, payload: res.data });
 };
