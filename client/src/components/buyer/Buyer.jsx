@@ -78,12 +78,12 @@ class Buyer extends React.Component {
           <div>
               <div className="buyer-nav">
                   <div className="user-profile">Hi, {name.split(' ')[0]}!</div>
-                  
+
                   <div className="rightbuyernav">
                         <div className="list-icon" onClick={this.goToList}></div>
                         <div onClick={this.toggleCheckout} className="cart-icon">
                           {icon}
-                        </div>  
+                        </div>
                   </div>
               </div>
               {renderModal}

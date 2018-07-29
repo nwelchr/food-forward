@@ -11,14 +11,10 @@ class ItemIndex extends React.Component {
 
     switch (this.props.sortType) {
       case 'time-lh':
-        {
-          items = items.sort((a, b) => a.createdAt < b.createdAt);
-        }
+        items = items.sort((a, b) => a.createdAt > b.createdAt);
         break;
       case 'time-hl':
-        {
-          items = items.sort((a, b) => a.createdAt > b.createdAt);
-        }
+        items = items.sort((a, b) => a.createdAt < b.createdAt);
         break;
       case 'abc-lh':
         items = items.sort(
@@ -31,10 +27,10 @@ class ItemIndex extends React.Component {
         );
         break;
       case 'quota-lh':
-        items = items.sort((a, b) => Number(a.quota) < Number(b.quota));
+        items = items.sort((a, b) => Number(a.quota) > Number(b.quota));
         break;
       case 'quota-hl':
-        items = items.sort((a, b) => Number(a.quota) > Number(b.quota));
+        items = items.sort((a, b) => Number(a.quota) < Number(b.quota));
         break;
       case 'remaining-lh':
         items = items.sort(
