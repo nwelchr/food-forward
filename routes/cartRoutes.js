@@ -3,6 +3,7 @@ const requireLogin = require('../middlewares/requireLogin');
 
 const Nonprofit = mongoose.model('Nonprofit');
 const CartItem = mongoose.model('CartItem');
+const User = mongoose.model('User')
 
 const ObjectId = require('mongodb').ObjectID;
 
@@ -18,18 +19,19 @@ module.exports = app => {
 
     const { nonprofitId, amount, _id } = item;
 
+    
     const user = await User.findById(req.params.id);
-
+    
     const newItem = new CartItem({ nonprofitId, amount, _id });
-
+    
     try {
       user.cart[newItem._id] = newItem;
       await user.save();
-
       res.send(user.cart);
     } catch (err) {
       res.send(400, err);
     }
+  
   });
 
   app.put('/api/users/:id/items', requireLogin, async (req, res) => {

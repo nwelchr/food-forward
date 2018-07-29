@@ -4,9 +4,12 @@ class BuyerIndexItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            inCart: !!this.props.cart,
+            inCart: Boolean(this.props.cart),
             amount: 0 
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.update = this.update.bind(this);
     }
 
     update(field) {
@@ -18,19 +21,24 @@ class BuyerIndexItem extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         let item = {
-            nonProfitId: "5b5d085560cd313ab45be5a9", 
+            nonprofitId: "5b5d085560cd313ab45be5a9", 
             amount: this.state.amount,
             _id: this.props.item._id,
         };
+
+        console.log('Generated Item', item);
         if (this.state.inCart) {
             item.amount = this.props.cart.amount + this.state.amount;
-            this.props.updateCartItem(this.props.user.id, item);
+            this.props.updateCartItem(this.props.user._id, item);
         } else {
-            this.props.addCartItem(this.props.user.id, item);
+            this.props.addCartItem(this.props.user._id, item);
         }
+
+        this.setState({amount: 0});
     }
 
     render() {
+        console.log('itemState', this.state);
         return(
             <li>
                 <ul>

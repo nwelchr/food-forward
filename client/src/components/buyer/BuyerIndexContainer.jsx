@@ -4,7 +4,7 @@ import BuyerIndex from './BuyerIndex';
 
 const mapStateToProps = (state, ownProps) => ({
     cart: state.cart,
-    items: state.items,
+    items: state.nonprofits,
     user: state.auth
 });
 

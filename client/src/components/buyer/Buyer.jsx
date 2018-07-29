@@ -13,7 +13,7 @@ class Buyer extends React.Component {
     render() {
         return(
             <div>
-                HELLO
+                <BuyerIndexContainer />
             </div>
         );
     }

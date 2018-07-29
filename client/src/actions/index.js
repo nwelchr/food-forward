@@ -13,10 +13,10 @@ export const handleToken = token => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const receiveCart = cart => {
+export const receiveCart = cart => ({
   type: RECEIVE_CART,
   cart
-}
+})
 
 export const fetchCart = id => async dispatch => {
   const res = await axios.get(`/api/users/${id}/items`)
@@ -26,17 +26,18 @@ export const fetchCart = id => async dispatch => {
 
 export const addCartItem = (id, item) => async dispatch => {
   const res = await axios.post(`/api/users/${id}/items`, { item })
-
-  dispatch(receiveCart(res.cart))
+  console.log(res)
+  dispatch(receiveCart(res.data))
 }
 
 export const updateCartItem = (id, item) => async dispatch => {
   const res = await axios.put(`/api/users/${id}/items/${item._id}`, { item })
 
-  dispatch(receiveCart(res.cart))
+  dispatch(receiveCart(res.data))
 }
 
 export const fetchNonprofitItems = (id) => async dispatch => {
   const res = await axios.get(`/api/nonprofits/${id}/items`);
+  console.log('RESPONSE FETCH NP', res)
   dispatch({ type: RECEIVE_NONPROFIT_ITEMS, payload: res.data });
 };

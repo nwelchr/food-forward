@@ -5,7 +5,8 @@ export default function(state = {}, action) {
   switch (action.type) {
     case RECEIVE_CART:
       const cart = action.cart;
-      return { cart };
+      console.log('received cart', cart);
+      return cart;
     default:
       return state;
   }
