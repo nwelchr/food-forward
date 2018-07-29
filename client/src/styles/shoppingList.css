@@ -1,9 +1,12 @@
-table, th, td {
+table,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 10px 0px 10px 0px;
     font-size: 3vh;
 }
@@ -11,6 +14,7 @@ th, td {
 th {
     width: 7em;
 }
+
 td {
     text-align: center;
 }
@@ -48,15 +52,37 @@ table {
     align-items: center;
 }
 
-.Guidelines {
+.guidelines {
     display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 371px;
+}
+
+table {
+    margin-bottom: 20px
+}
+
+h5 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.guideline-list {
+    margin-bottom: 10px;
+    list-style-type: disc;
+}
+
+strong {
+    font-size: 18px;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 600px) {
-    .th, .td {
+    .th,
+    .td {
         padding: 0px;
     }
-
     .th {
         width: auto;
     }
