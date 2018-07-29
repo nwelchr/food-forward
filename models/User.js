@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   googleId: String,
   displayName: String,
-  shoppingCart: Object,
+  cart: { type: Schema.Types.ObjectId, ref: 'CartItem' }
 });
 
 mongoose.model('User', userSchema);
