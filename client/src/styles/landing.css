@@ -111,6 +111,11 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+.sign-in-text {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Modal Content */
 
 .modal-content {
@@ -130,6 +135,11 @@
     box-shadow: 3px 6px 15px black;
     transition: top 1s ease;
     z-index: 1;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .modal-content p {
@@ -141,7 +151,7 @@
 
 .close {
     color: #aaaaaa;
-    float: right;
+    padding-left: 20px;
     font-size: 28px;
     font-weight: bold;
 }
