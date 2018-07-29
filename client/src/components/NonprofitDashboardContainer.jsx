@@ -9,7 +9,6 @@ import {
 import NonprofitDashboard from './NonprofitDashboard';
 
 const mapStateToProps = state => {
-  console.log(state.auth);
   const displayName = state.auth ? state.auth.displayName : null;
   return {
     items: state.nonprofits,

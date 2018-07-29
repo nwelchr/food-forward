@@ -247,7 +247,7 @@ class NonprofitDashboard extends React.Component {
               type="number"
               onChange={this.update('quota')}
               value={this.state.quota}
-              placeholder="Quota"
+              placeholder="Quota ($)"
             />
 
             <input
@@ -255,7 +255,7 @@ class NonprofitDashboard extends React.Component {
               type="number"
               onChange={this.update('price')}
               value={this.state.price}
-              placeholder="Price"
+              placeholder="Price per item ($)"
             />
 
             <input type="submit" />
@@ -270,7 +270,6 @@ class NonprofitDashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="body-wrapper">
         <div className="non-profit-dashboard">

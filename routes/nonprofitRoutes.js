@@ -52,12 +52,14 @@ module.exports = app => {
 
     try {
       const newItems = { ...nonprofit.items };
-      newItems[itemId] = item;
+      const oldItem = newItems[itemId];
+      const newItem = { ...oldItem, ...item };
+      newItems[itemId] = newItem;
       nonprofit.items = newItems;
 
       await nonprofit.save();
 
-      res.send(item);
+      res.send(newItem);
     } catch (err) {
       res.send(400, err);
     }

@@ -23,7 +23,7 @@ export const updateNonprofitItem = item => async dispatch => {
 };
 
 export const deleteNonprofitItem = id => async dispatch => {
-  const res = await axios.delete(`/api/items`);
+  const res = await axios.delete(`/api/items/${id}`);
 
   dispatch({ type: DELETE_NONPROFIT_ITEM, payload: res.data });
 };

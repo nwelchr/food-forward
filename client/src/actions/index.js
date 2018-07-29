@@ -1,52 +1,50 @@
 import axios from 'axios';
-import {RECEIVE_NONPROFIT_ITEMS, FETCH_USER, RECEIVE_CART} from './types';
+import { RECEIVE_NONPROFIT_ITEMS, FETCH_USER, RECEIVE_CART } from './types';
 
 export const fetchUser = () => async dispatch => {
-  const res = await axios.get('/api/current_user', {withCredentials: true});
+  const res = await axios.get('/api/current_user', { withCredentials: true });
 
-  dispatch({type: FETCH_USER, payload: res.data});
+  dispatch({ type: FETCH_USER, payload: res.data });
 };
 
 export const handleToken = token => async dispatch => {
   const res = await axios.post('/api/stripe', token);
 
-  dispatch({type: FETCH_USER, payload: res.data});
+  dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const receiveCart = cart => ({type: RECEIVE_CART, cart})
+export const receiveCart = cart => ({ type: RECEIVE_CART, cart });
 
 export const fetchCart = id => async dispatch => {
-  const res = await axios.get(`/api/users/${id}/items`)
+  const res = await axios.get(`/api/users/${id}/items`);
 
   dispatch(receiveCart(res.cart));
-}
+};
 
 export const addCartItem = (id, item) => async dispatch => {
-  const res = await axios.post(`/api/users/${id}/items`, {item})
-  dispatch(receiveCart(res.data))
-}
+  const res = await axios.post(`/api/users/${id}/items`, { item });
+  dispatch(receiveCart(res.data));
+};
 
 export const updateCartItem = (id, item) => async dispatch => {
-  const res = await axios.put(`/api/users/${id}/items/${item._id}`, {item})
+  const res = await axios.put(`/api/users/${id}/items/${item._id}`, { item });
 
-  dispatch(receiveCart(res.data))
-}
+  dispatch(receiveCart(res.data));
+};
 
 export const deleteCartItem = (id, itemId) => async dispatch => {
-  console.log('delete', itemId)
-  const res = await axios.delete(`/api/users/${id}/items/${itemId}`,)
+  const res = await axios.delete(`/api/users/${id}/items/${itemId}`);
 
-  dispatch(receiveCart(res.data))
-}
+  dispatch(receiveCart(res.data));
+};
 
-export const checkout = (id) => async dispatch => {
-  console.log('checkout')
-  const res = await axios.patch(`/api/users/${id}/pay/`)
+export const checkout = id => async dispatch => {
+  const res = await axios.patch(`/api/users/${id}/pay/`);
 
-  dispatch(receiveCart({}))
-}
+  dispatch(receiveCart({}));
+};
 
-export const fetchNonprofitItems = (id) => async dispatch => {
+export const fetchNonprofitItems = id => async dispatch => {
   const res = await axios.get(`/api/nonprofits/${id}/items`);
-  dispatch({type: RECEIVE_NONPROFIT_ITEMS, payload: res.data});
+  dispatch({ type: RECEIVE_NONPROFIT_ITEMS, payload: res.data });
 };

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const {Schema} = mongoose;
 
 const itemSchema = new Schema({
   name: String,
@@ -14,7 +14,10 @@ const itemSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  _nonprofit: { type: Schema.Types.ObjectId, ref: 'Nonprofit' }
+  _nonprofit: {
+    type: Schema.Types.ObjectId,
+    ref: 'Nonprofit'
+  }
 });
 
 mongoose.model('Item', itemSchema);
