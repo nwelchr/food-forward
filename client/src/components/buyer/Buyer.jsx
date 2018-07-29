@@ -76,7 +76,7 @@ class Buyer extends React.Component {
         return (
             <div>
                 <div className="buyer-nav">
-                    <div className="user-profile">{name}</div>
+                    <div className="user-profile">Hi, {name.split(' ')[0]}! </div>
                     <button className="change-item-button add"><a className="logout-btn" href={'/auth/logout'}> Logout</a> </button>
                     <div onClick={this.toggleCheckout} className="cart-icon">
                         {icon}

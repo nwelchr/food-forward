@@ -1,18 +1,18 @@
 .buyer-nav {
-    position: sticky; 
+    position: sticky;
     top: 0;
     height: 15vh;
-    background-color: rgba(255, 255, 255, 0.95);
-    display: -ms-flexbox;
+    background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1; 
+    z-index: 1;
+    box-shadow: 1px 1px 5px black;
 }
 
 .user-profile { 
     margin: 20px 60px; 
-    color: black; 
+    color: white; 
     font-size: 2em; 
 }
 
@@ -23,8 +23,9 @@
     margin: 40px 60px;
     background: url(http://simpleicon.com/wp-content/uploads/Shopping-Cart-9.png);
     background-size: contain;
+    filter: invert(1);
     background-repeat: no-repeat;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 
@@ -55,5 +56,16 @@
     }
     .user-profile {
         margin: 20px 40px; 
+    }
+    .cart-icon-circle {
+        width: 25px;
+        height: 25px;
+        top: -8px;
+        right: 2px;
+        text-align: center;
+    }
+    .cart-icon-number {
+        font-size: 1.2em;   
+        right: 7px; 
     }
 }
