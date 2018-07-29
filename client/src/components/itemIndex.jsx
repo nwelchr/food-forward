@@ -27,10 +27,10 @@ class ItemIndex extends React.Component {
         );
         break;
       case 'quota-lh':
-        items = items.sort((a, b) => Number(a.quota) < Number(b.quota));
+        items = items.sort((a, b) => Number(a.quota) > Number(b.quota));
         break;
       case 'quota-hl':
-        items = items.sort((a, b) => Number(a.quota) > Number(b.quota));
+        items = items.sort((a, b) => Number(a.quota) < Number(b.quota));
         break;
       case 'remaining-lh':
         items = items.sort(

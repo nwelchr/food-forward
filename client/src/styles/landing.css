@@ -90,8 +90,8 @@
 
 .landing-blurp {
     padding: 1vw 5vw;
-    /* font-size: 5vw;  */
-    font-size: 3em;
+    margin-left: 6px;
+    font-size: 2em;
     color: white;
     text-shadow: 3px 1px 3px rgba(0, 0, 0, 0.4);
 }
@@ -101,16 +101,16 @@
     cursor: pointer;
     bottom: 0px;
     margin: 5vw;
-    padding: 2vw 3vw;
-    font-size: 4em;
-    color: black;
-    text-shadow: 3px 1px 3px rgba(255, 255, 255, 0.4);
-    background-color: rgba(255, 255, 255, 0.65);
+    padding: 1.5vw 3vw;
+    font-size: 3em;
+    color: white;
+    text-shadow: 1.5px 1px 1px black;
+    background-color: rgba(255, 255, 255, 0.15);
     box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.4);
     border-radius: 5px;
-    /* border-color: rgba(0, 0, 0, 0); */
     border: none;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Helvetica Neue',
+    sans-serif;
 }
 
 @media only screen and (max-width: 600px) {
@@ -121,14 +121,16 @@
     }
     .landing-blurp {
         padding-top: 15px;
-        font-size: 2.5em;
+        font-size: 2em;
     }
     .landing-cta {
         width: 100vw;
-        margin: 0px 0px 30% 0px;
+        margin: 0px 0px 20% 0px;
+        font-size: 3.5em;
         height: 20%;
         border-radius: 0px;
-        box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
     }
 }
 
@@ -149,7 +151,8 @@
 
 .sign-in-text {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Modal Content */
@@ -157,30 +160,37 @@
 .modal-content {
     background-color: rgba(255, 255, 255, 0.95);
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 20px 0px;
     position: absolute;
-    top: -33%;
+    top: -53%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid #888;
-    width: 70vw;
-    max-width: 300px;
-    height: 50vh;
+    width: 250px;
+    height: 250px;
     border-radius: 5px;
     border-color: rgba(0, 0, 0, 0);
     box-shadow: 3px 6px 15px black;
     transition: top 1s ease;
     z-index: 1;
-    display: flex;
     -ms-flex-direction: column;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    text-align: center;
 }
 
 .modal-content p {
     text-align: center;
     font-size: 1.5em;
+    margin-top: 25px;
+    padding: 10px;
+    background-color: #4489F1;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 1px 1px 5px black;
+}
+
+.modal-content img {
+    width: 150px;
+    height: 150px;
 }
 
 /* The Close Button */

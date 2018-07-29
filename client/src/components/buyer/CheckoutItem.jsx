@@ -20,13 +20,18 @@ class CheckoutItem extends React.Component {
   }
 
   update(num) {
+    let amount = this.state.amount < 0 ? 0 : this.state.amount + num;
     let item = {
       nonprofitId: '5b5d085560cd313ab45be5a9',
-      amount: this.state.amount + num,
+      amount: amount,
       _id: this.props.item._id
     };
 
-    this.props.updateCartItem(this.props.user._id, item);
+    if(item.amount < 0) {
+      alert("Checkout Amount can not be less than 0");
+    } else {
+        this.props.updateCartItem(this.props.user._id, item);
+    }
 
     this.setState({
       amount: this.state.amount + num

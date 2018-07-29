@@ -1,18 +1,18 @@
 .buyer-nav {
-    position: sticky; 
+    position: sticky;
     top: 0;
     height: 15vh;
-    background-color: rgba(255, 255, 255, 0.95);
-    display: -ms-flexbox;
+    background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1; 
+    z-index: 1;
+    box-shadow: 1px 1px 5px black;
 }
 
 .user-profile { 
     margin: 20px 60px; 
-    color: black; 
+    color: white; 
     font-size: 2em; 
 }
 
@@ -30,18 +30,20 @@
     margin: 40px 60px;
     background: url(http://simpleicon.com/wp-content/uploads/Shopping-Cart-9.png);
     background-size: contain;
+    filter: invert(1);
     background-repeat: no-repeat;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .list-icon {
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
+    filter: invert(1);
     background: url(http://res.cloudinary.com/dwanjkcku/image/upload/c_scale,w_60/v1532879617/ingredients-list.png);
     background-size: contain;
     background-repeat: no-repeat;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 
@@ -67,10 +69,25 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .cart-icon, .list-icon {
-        margin: 0px 5px; 
+    .list-icon {
+        margin: 0px 15px 0px 0px; 
+    }
+    .cart-icon {
+        margin: 0px 30px 0px 0px;
     }
     .user-profile {
-        margin: 20px 40px; 
+        margin: 20px 20px; 
+        font-size: 1.7em;
+    }
+    .cart-icon-circle {
+        width: 25px;
+        height: 25px;
+        top: 0px;
+        right: 8px;
+        text-align: center;
+    }
+    .cart-icon-number {
+        font-size: 1.2em;   
+        right: 7px; 
     }
 }

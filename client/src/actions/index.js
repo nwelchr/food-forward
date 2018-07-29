@@ -46,5 +46,6 @@ export const checkout = id => async dispatch => {
 
 export const fetchNonprofitItems = id => async dispatch => {
   const res = await axios.get(`/api/nonprofits/${id}/items`);
+  console.log(res.data, "RESPONSE")
   dispatch({ type: RECEIVE_NONPROFIT_ITEMS, payload: res.data });
 };
