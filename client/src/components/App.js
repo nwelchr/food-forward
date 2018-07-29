@@ -5,7 +5,7 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-import CompanyContainer from './company_container';
+import NonprofitDashboardContianer from './NonprofitDashboardContainer';
 import UserDashboard from './UserDashboard';
 
 class App extends Component {
@@ -20,7 +20,10 @@ class App extends Component {
           <div>
             <Header />
             <Switch>
-              <Route path="/nonprofit_dashboard" component={CompanyContainer} />
+              <Route
+                path="/nonprofit_dashboard"
+                component={NonprofitDashboardContianer}
+              />
 
               {/* TIFFANY AND JON JUST CHANGE THIS*/}
               <Route path="/user_dashboard" component={UserDashboard} />
