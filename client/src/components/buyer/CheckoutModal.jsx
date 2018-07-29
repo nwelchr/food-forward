@@ -79,7 +79,6 @@ class CheckoutModal extends React.Component {
           <p>${cost}</p>
         </div>
         <div onClick={this.checkout} className="checkout-button">Checkout</div>
-        <div onClick={this.printList}>Shopping List</div>
       </div>
     );
   }
