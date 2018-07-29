@@ -25,8 +25,6 @@ class BuyerIndexItem extends React.Component {
             amount: this.state.amount,
             _id: this.props.item._id,
         };
-
-        console.log('Generated Item', item);
         if (this.state.inCart) {
             item.amount = this.props.cart.amount + this.state.amount;
             this.props.updateCartItem(this.props.user._id, item);
@@ -38,7 +36,6 @@ class BuyerIndexItem extends React.Component {
     }
 
     render() {
-        console.log('itemState', this.state);
         return(
             <li>
                 <ul>

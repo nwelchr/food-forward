@@ -12,7 +12,6 @@ class BuyerIndex extends React.Component {
 
     render() {
 
-        console.log("buyerindex", this.props);
         let items = this.props.items ? Object.values(this.props.items).map((item) => {
             return (
                 <BuyerIndexItem key={`item-${item._id}`}
@@ -25,7 +24,6 @@ class BuyerIndex extends React.Component {
             );
         }) : '';
 
-        console.log('RENDERRRRR', this.props);
 
         return(
             <div>

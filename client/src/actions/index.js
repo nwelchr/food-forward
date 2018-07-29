@@ -26,7 +26,6 @@ export const fetchCart = id => async dispatch => {
 
 export const addCartItem = (id, item) => async dispatch => {
   const res = await axios.post(`/api/users/${id}/items`, { item })
-  console.log(res)
   dispatch(receiveCart(res.data))
 }
 
@@ -38,6 +37,5 @@ export const updateCartItem = (id, item) => async dispatch => {
 
 export const fetchNonprofitItems = (id) => async dispatch => {
   const res = await axios.get(`/api/nonprofits/${id}/items`);
-  console.log('RESPONSE FETCH NP', res)
   dispatch({ type: RECEIVE_NONPROFIT_ITEMS, payload: res.data });
 };
