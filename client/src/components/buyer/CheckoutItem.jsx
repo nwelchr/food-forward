@@ -1,20 +1,18 @@
 import React from "react";
 
-
 class CheckoutItem extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    // componentDidMount() {
-    //     this.props.fetchNonprofitItems();
-    // }
+    // componentDidMount() {     this.props.fetchNonprofitItems(); }
 
     render() {
-        let {name, price, quantity} = this.props; 
+        let {name, price, quantity} = this.props;
+        console.log(this.props);
         return (
             <li className="checkout-item">
-                <div className="checkout-image" />
+                <div className="checkout-image"/>
                 <div className="checkout-item-details">
                     <div className="c-i-name">{name}</div>
                     <div className="c-i-cost">${price}</div>
@@ -24,7 +22,8 @@ class CheckoutItem extends React.Component {
                     <div className="co-num">{quantity}</div>
                     <div className="co-increment">&#9654;</div>
                 </div>
-                <div className="checkout-remove">	&#128465;</div>
+                <div className="checkout-remove">
+                    &#128465;</div>
             </li>
         );
     }
