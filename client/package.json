@@ -14,12 +14,14 @@
     "axios": "^0.16.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-dropzone": "^4.2.13",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^1.0.10",
     "redux": "^3.7.2",
     "redux-form": "^7.4.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "superagent": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
