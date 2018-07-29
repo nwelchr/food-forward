@@ -60,7 +60,6 @@ class Buyer extends React.Component {
 
     const cartCount = Object.keys(this.props.cart).length;
 
-<<<<<<< HEAD
     const icon =
       cartCount > 0 ? (
         <div className="cart-icon-circle">
@@ -74,39 +73,15 @@ class Buyer extends React.Component {
       <div>
         <div className="buyer-nav">
           <div className="user-profile">{name}</div>
+          <button className="change-item-button add">
+            <a className="logout-btn" href="/auth/logout">
+              {logout}
+            </a>
+          </button>
           <div className="rightbuyernav">
             <div className="list-icon" onClick={this.goToList} />
             <div onClick={this.toggleCheckout} className="cart-icon">
               {icon}
-=======
-        const icon = cartCount > 0
-            ? (
-                <div className="cart-icon-circle">
-                    <div className="cart-icon-number">{cartCount}</div>
-                </div>
-            )
-            : '';
-        // let theCheckout = useremail – comapny donating to – shoping cart item
-        return (
-            <div>
-                <div className="buyer-nav">
-                    <div className="user-profile">{name}</div>
-                    <button className="change-item-button add">
-                      <a className="logout-btn" href="/auth/logout">
-                        {logout}
-                      </a>
-                    </button>
-                    <div className="rightbuyernav">
-                        <div className="list-icon" onClick={this.goToList}></div>
-                        <div onClick={this.toggleCheckout} className="cart-icon">
-                            {icon}
-                    </div>
-                    </div>
-                </div>
-                {renderModal}
-                {bgModal}
-                <BuyerIndexContainer/>
->>>>>>> master
             </div>
           </div>
         </div>
