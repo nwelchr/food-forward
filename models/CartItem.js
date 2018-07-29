@@ -11,4 +11,4 @@ const cartItemSchema = new Schema({
   }
 });
 
-mongoose.model('cartItem', cartItemSchema);
+mongoose.model('CartItem', cartItemSchema);

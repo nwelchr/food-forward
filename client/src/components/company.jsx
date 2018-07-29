@@ -1,15 +1,14 @@
 import React from 'react';
-import Dropzone from "react-dropzone";
-import request from "superagent";
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
 
 import ItemIndex from './itemIndex';
-const CLOUDINARY_UPLOAD_PRESET = "zfgcp1tk";
+const CLOUDINARY_UPLOAD_PRESET = 'zfgcp1tk';
 const CLOUDINARY_UPLOAD_URL =
-  "https://api.cloudinary.com/v1_1/dwanjkcku/upload";
-
+  'https://api.cloudinary.com/v1_1/dwanjkcku/upload';
 
 class Company extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       name: '',
@@ -23,15 +22,16 @@ class Company extends React.Component {
   //   this.props.fetchItems();
   // }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
     this.props.updateItem(this.state);
   }
 
   update(field) {
-    return (e) => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return e =>
+      this.setState({
+        [field]: e.currentTarget.value
+      });
   }
 
   onImageDrop(files) {
@@ -45,15 +45,15 @@ class Company extends React.Component {
   handleImageUpload(file) {
     let upload = request
       .post(CLOUDINARY_UPLOAD_URL)
-      .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
-      .field("file", file);
+      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      .field('file', file);
 
     upload.end((err, response) => {
       if (err) {
         console.error(err);
       }
 
-      if (response.body.secure_url !== "") {
+      if (response.body.secure_url !== '') {
         this.setState({
           image_url: response.body.secure_url
         });
@@ -61,88 +61,82 @@ class Company extends React.Component {
     });
   }
 
-
-
-  render(){
-  //   if (Object.keys(this.props.items).length === 0) {
-  //     return (
-  //    <p>Loading...</p>
-  //    );
-  //  }
-  //  const featuredItems = Object.values(this.props.items);
-    return(
+  render() {
+    console.log(this.props);
+    //   if (Object.keys(this.props.items).length === 0) {
+    //     return (
+    //    <p>Loading...</p>
+    //    );
+    //  }
+    //  const featuredItems = Object.values(this.props.items);
+    return (
       <div>
         <nav>
           <div> Company Name </div>
-          <div>  + </div>
+          <div> + </div>
         </nav>
-          <div className="product-image-upload">
-            <h1>Photo:</h1>
-            <Dropzone
-              multiple={false}
-              accept="image/*"
-              onDrop={this.onImageDrop.bind(this)}
-            >
-              <div className="drop-zone-instructions">
-                <div>Add a Primary Photo</div>
-                <div>Drop an image or click to select a file to upload.</div>
-                <br />
-                <i className="fa fa-camera" aria-hidden="true" />
-              </div>
-            </Dropzone>
-            <div>
-              {this.state.image_url === "" ? null : (
-                <div className="image-upload">
-                  <div>
-                    <img src={this.state.image_url} />
-                  </div>
-                  {this.props.formType === "Create A Product" ? (
-                    <div>{this.state.uploadedFile.name}</div>
-                  ) : null}
-                </div>
-              )}
+        <div className="product-image-upload">
+          <h1>Photo:</h1>
+          <Dropzone
+            multiple={false}
+            accept="image/*"
+            onDrop={this.onImageDrop.bind(this)}>
+            <div className="drop-zone-instructions">
+              <div>Add a Primary Photo</div>
+              <div>Drop an image or click to select a file to upload.</div>
+              <br />
+              <i className="fa fa-camera" aria-hidden="true" />
             </div>
+          </Dropzone>
+          <div>
+            {this.state.image_url === '' ? null : (
+              <div className="image-upload">
+                <div>
+                  <img src={this.state.image_url} />
+                </div>
+                {this.props.formType === 'Create A Product' ? (
+                  <div>{this.state.uploadedFile.name}</div>
+                ) : null}
+              </div>
+            )}
           </div>
-         <form className='itemForm' onSubmit = {this.handleSubmit}>
-           <div className='ItemErros'>
-             Errors
-           </div>
-           <label>
-             Item Name:
-             <input
-               className='search'
-               type="text"
-               onChange = {this.update('name')}/>
-           </label>
+        </div>
+        <form className="itemForm" onSubmit={this.handleSubmit}>
+          <div className="ItemErros">Errors</div>
+          <label>
+            Item Name:
+            <input
+              className="search"
+              type="text"
+              onChange={this.update('name')}
+            />
+          </label>
 
-           <label>
-             Quota :
-             <input
-               className='amount'
-               type="number"
-               onCHange={this.update('quota')}/>
-           </label>
+          <label>
+            Quota :
+            <input
+              className="amount"
+              type="number"
+              onCHange={this.update('quota')}
+            />
+          </label>
 
-           <label>
-             Item Cost :
-             <input
-               className='amount'
-               type="number"
-               onCHange={this.update('item_cost')}/>
-           </label>
+          <label>
+            Item Cost :
+            <input
+              className="amount"
+              type="number"
+              onCHange={this.update('item_cost')}
+            />
+          </label>
 
+          <input type="submit" />
+        </form>
 
-           <input type='submit'/>
-         </form>
-
-        <ItemIndex
-          items={this.props.items}
-        />
-
-     </div>
-   );
+        <ItemIndex items={this.props.items} />
+      </div>
+    );
   }
 }
 
-
-export default Company
+export default Company;
