@@ -14,6 +14,7 @@ module.exports = app => {
   });
 
   app.post('/api/items', requireLogin, async (req, res) => {
+    console.log('WHY AM I HITTING THIS');
     const item = req.body;
 
     const { name, price, image, quota } = item;
@@ -39,14 +40,18 @@ module.exports = app => {
   });
 
   app.put('/api/items', requireLogin, async (req, res) => {
-    const { item } = req.body;
+    const item = req.body;
 
     const itemId = item._id;
+    console.log(item._id);
 
     const nonprofit = await Nonprofit.findById(req.user._id);
 
     try {
-      nonprofit.items[itemId] = item;
+      const newItems = { ...nonprofit.items };
+      newItems[itemId] = item;
+      nonprofit.items = newItems;
+
       await nonprofit.save();
 
       res.send(item);

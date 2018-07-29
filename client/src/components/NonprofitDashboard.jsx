@@ -7,7 +7,7 @@ const CLOUDINARY_UPLOAD_PRESET = 'zfgcp1tk';
 const CLOUDINARY_UPLOAD_URL =
   'https://api.cloudinary.com/v1_1/dwanjkcku/upload';
 
-class Company extends React.Component {
+class NonprofitDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,12 +15,14 @@ class Company extends React.Component {
       quota: '',
       uploadImageUrl: '',
       inputImageUrl: '',
-      cost: ''
+      price: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.search = this.search.bind(this);
+    this.openModal = this.openModal.bind(this);
     this.setInputImage = this.setInputImage.bind(this);
+    this.openUpdateModal = this.openUpdateModal.bind(this);
   }
 
   componentDidMount() {
@@ -29,23 +31,38 @@ class Company extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { name, quota, uploadImageUrl, inputImageUrl, cost } = this.state;
+    const { name, quota, uploadImageUrl, inputImageUrl, price } = this.state;
     const image = uploadImageUrl || inputImageUrl;
-    if (name && quota && cost && image) {
+    if (name && quota && price && image) {
       const item = {
         name,
         quota,
-        cost,
+        price,
         image
       };
       const that = this;
+      if (this.state.updateItemId) {
+        const updateItem = { ...item, _id: this.state.updateItemId };
+        return this.props.updateNonprofitItem(updateItem).then(() => {
+          that.setState({
+            name: '',
+            uploadImageUrl: '',
+            inputImageUrl: '',
+            price: '',
+            quota: '',
+            updateItemId: '',
+            modalType: ''
+          });
+        });
+      }
       this.props.createNonprofitItem(item).then(() =>
         that.setState({
           name: '',
           uploadImageUrl: '',
           inputImageUrl: '',
-          cost: '',
-          quota: ''
+          price: '',
+          quota: '',
+          modalType: ''
         })
       );
     }
@@ -62,6 +79,19 @@ class Company extends React.Component {
     this.setState({
       inputImageUrl: image,
       previewImages: ''
+    });
+  }
+
+  openUpdateModal(item) {
+    const { name, quota, price, image: inputImageUrl, _id } = item;
+    console.log(item);
+    this.setState({
+      modalType: 'update',
+      name,
+      quota,
+      price,
+      inputImageUrl,
+      updateItemId: _id
     });
   }
 
@@ -117,14 +147,9 @@ class Company extends React.Component {
     scraper();
   }
 
-  render() {
-    console.log(this.state, 'NEW STATE!');
+  renderModal() {
     return (
-      <div>
-        <nav>
-          <div> Company Name </div>
-          <div> + </div>
-        </nav>
+      <div className="item-modal-screen">
         <div className="product-image-upload">
           <h1>Photo:</h1>
           <Dropzone
@@ -158,56 +183,75 @@ class Company extends React.Component {
               </div>
             )}
           </div>
+          <form className="itemForm" onSubmit={this.handleSubmit}>
+            <div className="ItemErros">Errors</div>
+            <label>
+              Item Name:
+              <input
+                className="search"
+                type="text"
+                onChange={this.update('name')}
+                value={this.state.name}
+              />
+              <button onClick={this.search}>Find image</button>
+            </label>
+
+            <div>
+              {this.state.previewImages &&
+                this.state.previewImages.map(img => (
+                  <img
+                    onClick={() => this.setInputImage(img)}
+                    style={{ width: 100 }}
+                    src={img}
+                  />
+                ))}
+            </div>
+
+            <label>
+              Quota :
+              <input
+                className="amount"
+                type="number"
+                onChange={this.update('quota')}
+                value={this.state.quota}
+              />
+            </label>
+
+            <label>
+              Item price :
+              <input
+                className="amount"
+                type="number"
+                onChange={this.update('price')}
+                value={this.state.price}
+              />
+            </label>
+
+            <input type="submit" />
+          </form>
         </div>
-        <form className="itemForm" onSubmit={this.handleSubmit}>
-          <div className="ItemErros">Errors</div>
-          <label>
-            Item Name:
-            <input
-              className="search"
-              type="text"
-              onChange={this.update('name')}
-              value={this.state.name}
-            />
-            <button onClick={this.search}>Find image</button>
-          </label>
+      </div>
+    );
+  }
 
-          <div>
-            {this.state.previewImages &&
-              this.state.previewImages.map(img => (
-                <img
-                  onClick={() => this.setInputImage(img)}
-                  style={{ width: 100 }}
-                  src={img}
-                />
-              ))}
-          </div>
+  openModal() {
+    this.setState({ modalType: 'create' });
+  }
 
-          <label>
-            Quota :
-            <input
-              className="amount"
-              type="number"
-              onChange={this.update('quota')}
-              value={this.state.quota}
-            />
-          </label>
+  render() {
+    return (
+      <div>
+        <nav>
+          <div> Company Name </div>
+        </nav>
 
-          <label>
-            Item Cost :
-            <input
-              className="amount"
-              type="number"
-              onChange={this.update('cost')}
-              value={this.state.cost}
-            />
-          </label>
+        <button onClick={this.openModal}>Add Item</button>
 
-          <input type="submit" />
-        </form>
+        {this.state.modalType && this.renderModal()}
 
         <ItemIndex
           deleteNonprofitItem={this.props.deleteNonprofitItem}
+          openUpdateModal={this.openUpdateModal}
           items={this.props.items}
         />
       </div>
@@ -215,4 +259,4 @@ class Company extends React.Component {
   }
 }
 
-export default Company;
+export default NonprofitDashboard;
