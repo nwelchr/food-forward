@@ -12,10 +12,14 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      if (req.user._id === '5b5d010445f9e8378e995b97') {
-        return res.redirect(`/nonprofit_dashboard`);
+      // Not sure why double equals works
+      // Really hacky!
+      if (req.user._id == '5b5d085560cd313ab45be5a9') {
+        console.log(req.user);
+        res.redirect(`/nonprofit_dashboard`);
+      } else {
+        res.redirect(`/user_dashboard`);
       }
-      res.redirect(`/user_dashboard`);
     }
   );
 
@@ -25,7 +29,7 @@ module.exports = app => {
   });
 
   app.get('/api/current_user', (req, res) => {
-    console.log(req.user);
+    console.log(req.user, 'CURRENT_USER');
     res.send(req.user);
   });
 };
