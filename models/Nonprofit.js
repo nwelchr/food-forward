@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const nonprofitSchema = new Schema({
   googleId: String,
   displayName: String,
-  items: { type: Schema.Types.ObjectId, ref: 'Item' }
+  items: Object
 });
 
 mongoose.model('Nonprofit', nonprofitSchema);

@@ -18,8 +18,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchNonprofitItems: () => dispatch(fetchNonprofitItems()),
-  createNonprofitItem: (id, item) => dispatch(createNonprofitItem(id, item)),
-  updateNonprofitItem: (id, item) => dispatch(deleteNonprofitItem(id, item)),
+  createNonprofitItem: item => dispatch(createNonprofitItem(item)),
+  updateNonprofitItem: item => dispatch(deleteNonprofitItem(item)),
   deleteNonprofitItem: id => dispatch(deleteNonprofitItem(id))
 });
 
