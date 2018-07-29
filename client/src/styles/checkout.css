@@ -48,7 +48,7 @@
 }
 .checkout-ul::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 3px;
+    width: 4px;
     /* color: skyblue; */
 }
 
