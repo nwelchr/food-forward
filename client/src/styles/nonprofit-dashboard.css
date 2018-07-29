@@ -249,6 +249,7 @@
 .item-index-item td,
 .item-index-item p {
   font-family: 'HelveticaNeue-Light';
+  border: 0;
 }
 
 .item-index-item p {
