@@ -16,16 +16,31 @@ module.exports = app => {
     const cart = user.cart;
 
     // Update items for nonprofit
+
     for (let cartItemId in cart) {
       const cartItem = cart[cartItemId]
       console.log(cartItem)
       const nonprofit = await Nonprofit.findById(cartItem.nonprofitId);
+      console.log('first NP', nonprofit)
       const nonprofitItem = nonprofit.items[cartItem._id];
+      // console.log(nonprofitItem)
       const calculatedPrice = nonprofitItem.price * cartItem.amount;
-      nonprofitItem.amtRaised += calculatedPrice;
-      nonprofit.items[nonprofitId] = nonprofitItem;
+      nonprofitItem.amtRaised = String(Number(calculatedPrice) + Number(nonprofitItem.amtRaised));
+      // nonprofit.items[cartItem._id] = nonprofitItem;
+      console.log(nonprofitItem)
       try {
+        const newItems = {
+          ...nonprofit.items
+        };
+        const newItem = {
+          ...nonprofitItem
+        }
+        newItem.amtRaised = Number(calculatedPrice) + Number(nonprofitItem.amtRaised)
+        newItems[cartItem._id] = newItem
+        nonprofit.items = newItems
+        console.log("NO P ", nonprofit)
         await nonprofit.save();
+        console.log(';alksdfj')
       } catch (err) {
         res.send(err, null);
       }
