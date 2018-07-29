@@ -23,8 +23,6 @@ class App extends Component {
             {/* <Header /> */}
             <Switch>
               <Route path="/nonprofit_dashboard" component={CompanyContainer} />
-
-              {/* TIFFANY AND JON JUST CHANGE THIS*/}
               <Route path="/user_dashboard" component={BuyerContainer} />
               <Route path="/" component={Landing} />
             </Switch>
