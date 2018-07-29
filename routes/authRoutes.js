@@ -12,12 +12,10 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      console.log('opwjefpojwefpojwepofjwe');
-      console.log(req.user);
-      if (req.user.googleId === '117028808660169665117') {
-        return res.redirect('/non_profit_dashboard');
+      if (req.user._id === '5b5d010445f9e8378e995b97') {
+        return res.redirect(`/dashboard`);
       }
-      res.redirect('/blogs');
+      res.redirect(`/dashboard`);
     }
   );
 
@@ -27,6 +25,7 @@ module.exports = app => {
   });
 
   app.get('/api/current_user', (req, res) => {
+    console.log(req.user);
     res.send(req.user);
   });
 };
