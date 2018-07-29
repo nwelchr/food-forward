@@ -15,6 +15,7 @@ class Buyer extends React.Component {
             .bind(this);
 
         this.changeStateTest = this.changeStateTest.bind(this); 
+        this.goToList = this.goToList.bind(this);
     }
 
     componentDidMount() {
@@ -38,6 +39,11 @@ class Buyer extends React.Component {
         }else{
             this.setState({checkout: Boolean(!this.state.checkout)}); 
         }
+    }
+
+    goToList(e) {
+        e.preventDefault();
+        this.props.history.push("/shoppingList")
     }
 
     changeStateTest() {
@@ -73,11 +79,11 @@ class Buyer extends React.Component {
             <div>
                 <div className="buyer-nav">
                     <div className="user-profile">{name}</div>
-        
-                        <div className="list-icon" onClick={() => this.ownProps.history.push("/shoppingList")}></div>
+                    <div className="rightbuyernav">
+                        <div className="list-icon" onClick={this.goToList}></div>
                         <div onClick={this.toggleCheckout} className="cart-icon">
                             {icon}
-                 
+                    </div>
                     </div>
                 </div>
                 {renderModal}

@@ -1,0 +1,63 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 0px 10px 0px;
+    font-size: 3vh;
+}
+
+th {
+    width: 7em;
+}
+td {
+    text-align: center;
+}
+
+.checkbox {
+    width: 30px;
+    background: url("http://res.cloudinary.com/dwanjkcku/image/upload/c_scale,w_30/v1532885628/check.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.user-dashboard {
+    padding: 2px 5px 2px 5px;
+    background-color: lightgrey;
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
+}
+
+table {
+    margin: auto;
+    top: 0;
+}
+
+.shopping-header {
+    font-size: 5vh;
+    margin: 2vh;
+}
+
+.shopping-list-Nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Guidelines {
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+    .th, .td {
+        padding: 0px;
+    }
+
+    .th {
+        width: auto;
+    }
+}
