@@ -1,0 +1,154 @@
+.landing {
+    height: 100vh;
+    width: inherit;
+    /* background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed; */
+    background-size: cover;
+    transition: background-image 2s ease;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: Multibackground 4s ease infinite;
+    -moz-animation: Multibackground 4s ease infinite;
+    animation: Multibackground 4s ease infinite;
+    animation-direction: alternate;
+}
+
+@-webkit-keyframes Multibackground {
+    0% {
+        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed;
+        background-size: cover;
+    }
+    100% {
+        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
+        background-size: cover;
+    }
+}
+
+@-moz-keyframes Multibackground {
+    0% {
+        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed;
+        background-size: cover;
+    }
+    100% {
+        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
+        background-size: cover;
+    }
+}
+
+@keyframes Multibackground {
+    0% {
+        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed;
+        background-size: cover;
+    }
+    100% {
+        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
+        background-size: cover;
+    }
+}
+
+.landing-title {
+    padding: 5vw 5vw 0vw;
+    /* font-size: 12vw; */
+    font-size: 7em;
+    color: white;
+    text-shadow: 3px 1px 7px rgba(0, 0, 0, 0.6);
+}
+
+.landing-blurp {
+    padding: 1vw 5vw;
+    /* font-size: 5vw;  */
+    font-size: 3em;
+    color: white;
+    text-shadow: 3px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.landing-cta {
+    position: absolute;
+    cursor: pointer;
+    bottom: 0px;
+    margin: 5vw;
+    padding: 2vw 3vw;
+    font-size: 4em;
+    color: black;
+    text-shadow: 3px 1px 3px rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.65);
+    box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    /* border-color: rgba(0, 0, 0, 0); */
+    border: none;
+    font-family: 'Crete Round', serif;
+}
+
+@media only screen and (max-width: 600px) {
+    .landing-title {
+        /* margin-top: 30px; */
+        padding: 60px 0px 0px 20px;
+        font-size: 5em;
+    }
+    .landing-blurp {
+        padding-top: 15px;
+        font-size: 2.5em;
+    }
+    .landing-cta {
+        width: 100vw;
+        margin: 0px 0px 30% 0px;
+        height: 20%;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+}
+
+/* modal stuff */
+
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.95);
+    margin: 0 auto;
+    padding: 20px;
+    position: absolute;
+    top: -33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #888;
+    width: 70vw;
+    max-width: 300px;
+    height: 50vh;
+    border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0);
+    box-shadow: 3px 6px 15px black;
+    transition: top 1s ease;
+    z-index: 1;
+}
+
+.modal-content p {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
