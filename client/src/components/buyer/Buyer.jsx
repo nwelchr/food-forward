@@ -7,7 +7,7 @@ class Buyer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchCart();
+        if (this.props.user) this.props.fetchCart(this.props.user._id);
     }
 
     render() {
