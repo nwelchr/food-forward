@@ -46,52 +46,58 @@ class Buyer extends React.Component {
   }
 
   render() {
-    const renderModal = this.state.checkout ? <CheckoutModal /> : '';
+      const renderModal = this.state.checkout
+          ? <CheckoutModal />
+          : '';
 
-    const bgModal = this.state.checkout ? (
-      <div onClick={this.toggleCheckout} className="bg-modal" />
-    ) : (
-      ''
-    );
+      const bgModal = this.state.checkout
+          ? <div onClick={this.toggleCheckout} className="bg-modal"></div>
+          : '';
 
-    const name = this.props.user ? this.props.user.displayName : '';
+      const name = this.props.user
+          ? this.props.user.displayName
+          : '';
 
-    const logout = this.props.user ? 'Logout' : '';
+      const logout = this.props.user
+          ? 'Logout'
+          : '';
 
-    const cartCount = Object.keys(this.props.cart).length;
+      const cartCount = Object
+          .keys(this.props.cart)
+          .length;
 
-    const icon =
-      cartCount > 0 ? (
-        <div className="cart-icon-circle">
-          <div className="cart-icon-number">{cartCount}</div>
-        </div>
-      ) : (
-        ''
-      );
-    // let theCheckout = useremail – comapny donating to – shoping cart item
-    return (
-      <div>
-          <div className="buyer-nav">
-            <div className="user-profile">{name}</div>
-            <button className="change-item-button add">
-              <a className="logout-btn" href="/auth/logout">
-                {logout}
-              </a>
-            </button>
-            <div className="rightbuyernav">
-              <div className="list-icon" onClick={this.goToList} />
-              <div onClick={this.toggleCheckout} className="cart-icon">
-                {icon}
+      const icon = cartCount > 0
+          ? (
+              <div className="cart-icon-circle">
+                  <div className="cart-icon-number">{cartCount}</div>
               </div>
-            </div>
-          </div>
-          {renderModal}
-          {bgModal}
-          <BuyerIndexContainer />
-        </div>
+          )
+          : '';
+      // let theCheckout = useremail – comapny donating to – shoping cart item
+      return (
+          <div>
+              <div className="buyer-nav">
+                  <div className="user-profile">Hi, {name.split(' ')[0]}!</div>
 
-    );
+                  <div className="rightbuyernav">
+                        <div className="list-icon" onClick={this.goToList}></div>
+                        <div onClick={this.toggleCheckout} className="cart-icon">
+                          {icon}
+                        </div>
+                  </div>
+              </div>
+              {renderModal}
+              {bgModal}
+              <BuyerIndexContainer/>
+              <button className="change-item-button add">
+                  <a className="logout-btn" href="/auth/logout">
+                      {logout}
+                  </a>
+              </button>
+          </div>
+      );
   }
-}
+};
+
 
 export default Buyer;
