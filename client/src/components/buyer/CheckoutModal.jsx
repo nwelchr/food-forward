@@ -15,19 +15,27 @@ class CheckoutModal extends React.Component {
     this.checkout = this
       .checkout
       .bind(this);
+
+    this.totalCost = this
+      .totalCost
+      .bind(this);
+
+    this.printList = this
+      .printList
+      .bind(this);
   }
 
   componentDidMount() {
-    // 
+    //
     setTimeout(function() {
       const modal = document.getElementsByClassName("checkout-modal")[0];
       modal.classList.add("checkout-modal-top");
-    }, 50); 
-    // this.modalTop(); 
+    }, 50);
+    // this.modalTop();
   }
 
   componentWillUnmount() {
-    window.clearTimeout(); 
+    window.clearTimeout();
   }
 
 
@@ -36,11 +44,7 @@ class CheckoutModal extends React.Component {
     return Object
       .values(this.props.cart)
       .map(itm => {
-        return <CheckoutItem
-          name={itm.name}
-          price={itm.price}
-          amount={itm.amount}
-          image={itm.image}/>;
+        return <CheckoutItem itemId={itm._id}/>;
       });
   }
 
@@ -50,18 +54,34 @@ class CheckoutModal extends React.Component {
       .checkout(this.props.user._id);
   }
 
+  printList() {}
+
+  totalCost() {
+    let sum = 0.00;
+    Object
+      .values(this.props.cart)
+      .forEach(item => {
+        sum += Number(item.price) * Number(item.amount);
+      });
+    return sum;
+  }
+
   render() {
     const items = this.generateItems();
-    return <div className="checkout-modal">
-        <ul className="checkout-ul">{items}</ul>
+    const cost = this.totalCost();
+    return (
+      <div className="checkout-modal">
+        <ul className="checkout-ul">
+          {items}
+        </ul>
         <div className="checkout-total">
           <p>Total</p>
-          <p>$300.00</p>
+          <p>${cost}</p>
         </div>
-        <div onClick={this.checkout} className="checkout-button">
-          Checkout
-        </div>
-      </div>;
+        <div onClick={this.checkout} className="checkout-button">Checkout</div>
+        <div onClick={this.printList}>Shopping List</div>
+      </div>
+    );
   }
 }
 

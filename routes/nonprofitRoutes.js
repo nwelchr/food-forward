@@ -14,14 +14,12 @@ module.exports = app => {
   });
 
   app.get('/api/nonprofits/:id/items', requireLogin, async (req, res) => {
-    console.log('nonprofito')
     const nonprofit = await Nonprofit.findById(req.params.id);
     const items = nonprofit.items;
     res.send(items);
   });
 
   app.post('/api/items', requireLogin, async (req, res) => {
-    console.log('WHY AM I HITTING THIS');
     const item = req.body;
 
     const { name, price, image, quota } = item;
@@ -41,7 +39,6 @@ module.exports = app => {
       await nonprofit.save();
       res.send(newItem);
     } catch (err) {
-      console.log(err);
       res.send(400, err);
     }
   });
@@ -50,7 +47,6 @@ module.exports = app => {
     const item = req.body;
 
     const itemId = item._id;
-    console.log(item._id);
 
     const nonprofit = await Nonprofit.findById(req.user._id);
 

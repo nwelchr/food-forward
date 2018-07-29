@@ -32,6 +32,13 @@ export const updateCartItem = (id, item) => async dispatch => {
   dispatch(receiveCart(res.data))
 }
 
+export const deleteCartItem = (id, itemId) => async dispatch => {
+  console.log('delete', itemId)
+  const res = await axios.delete(`/api/users/${id}/items/${itemId}`,)
+
+  dispatch(receiveCart(res.data))
+}
+
 export const checkout = (id) => async dispatch => {
   console.log('checkout')
   const res = await axios.patch(`/api/users/${id}/pay/`)

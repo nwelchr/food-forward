@@ -16,7 +16,6 @@ module.exports = app => {
 
   app.post('/api/users/:id/items', requireLogin, async(req, res) => {
     const {item} = req.body;
-    console.log('POSTED', item, req.params.id)
     const {nonprofitId, amount, _id} = item;
 
     const user = await User.findById(req.params.id);
@@ -24,17 +23,13 @@ module.exports = app => {
     // const newItem = new CartItem({nonprofitId, amount, _id});
     const fullItem = await makeFullItem({nonprofitId, amount, _id})
 
-    console.log('post post', user, fullItem)
     try {
-      console.log('test')
       const newCart = {
         ...user.cart
       }
-      console.log('test2', newCart)
 
       newCart[fullItem._id] = fullItem;
       user.cart = newCart;
-      console.log('newcart', newCart)
       await user.save();
       res.send(user.cart);
     } catch (err) {
@@ -57,7 +52,6 @@ module.exports = app => {
       }
       newCart[newItem._id] = fullItem;
       user.cart = newCart;
-      console.log('user', user)
       await user.save();
 
       console
@@ -67,21 +61,22 @@ module.exports = app => {
     }
   });
 
-  app.delete('/api/users/:id/items', requireLogin, async(req, res) => {
-    const _id = req.body;
+  app.delete('/api/users/:id/items/:itemId', requireLogin, async(req, res) => {
+    const _id = req.params.itemId;
 
     const user = await User.findById(req.params.id);
+    console.log("DELETE", user, _id, req.params)
 
     try {
-      const cart = {
+      const newCart = {
         ...user.cart
       };
-      const item = cart[_id];
-      delete cart[_id];
-      user.cart = cart;
+      delete newCart[_id];
+      user.cart = newCart;
+      console.log('in try', newCart, user)
       await user.save();
 
-      res.send(item);
+      res.send(user.cart);
     } catch (err) {
       res.send(400, err);
     }
@@ -89,8 +84,6 @@ module.exports = app => {
 };
 
 async function makeFullItem({nonprofitId, _id, amount}) {
-  console.log("MAKE FULL ITEM!!!!!!!!")
-  console.log('before')
   const nP = await Nonprofit.findById(nonprofitId)
   const nPItem = nP.items[_id]
   const fullItem = new CartItem({
@@ -101,6 +94,5 @@ async function makeFullItem({nonprofitId, _id, amount}) {
     price: nPItem.price,
     name: nPItem.name
   })
-  console.log('after', fullItem)
   return fullItem
 }
