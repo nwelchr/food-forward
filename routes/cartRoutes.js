@@ -15,17 +15,19 @@ module.exports = app => {
   });
 
   app.post('/api/users/:id/items', requireLogin, async (req, res) => {
-    const item = req.body;
-
+    const {item} = req.body;
+    console.log('POSTED', item, req.params.id)
     const { nonprofitId, amount, _id } = item;
-
     
     const user = await User.findById(req.params.id);
     
     const newItem = new CartItem({ nonprofitId, amount, _id });
     
+    console.log('post post', user, newItem)
     try {
-      user.cart[newItem._id] = newItem;
+      const newCart = {... user.cart} 
+      newCart[newItem._id] = newItem;
+      user.cart = newCart;
       await user.save();
       res.send(user.cart);
     } catch (err) {
@@ -34,15 +36,19 @@ module.exports = app => {
   
   });
 
-  app.put('/api/users/:id/items', requireLogin, async (req, res) => {
-    const item = req.body;
+  app.put('/api/users/:id/items/:itemId', requireLogin, async (req, res) => {
+    const {item} = req.body;
+    const { nonprofitId, amount, _id } = item;
 
     const user = await User.findById(req.params.id);
 
-    try {
-      user.cart[_id] = item;
-      await user.save();
+    const newItem = new CartItem({ nonprofitId, amount, _id });
 
+    try {
+      const newCart = {... user.cart} 
+      newCart[newItem._id] = newItem;
+      user.cart = newCart;
+      await user.save();
       res.send(user.cart);
     } catch (err) {
       res.send(400, err);

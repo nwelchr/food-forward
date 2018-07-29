@@ -18,7 +18,7 @@ class BuyerIndex extends React.Component {
                 item={item}
                 addCartItem={this.props.addCartItem}
                 updateCartItem={this.props.updateCartItem}
-                cart={this.props.cart[item.id]} 
+                cart={this.props.cart[item._id]} 
                 user={this.props.user}
                 />
             );
