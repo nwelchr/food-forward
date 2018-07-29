@@ -34,7 +34,6 @@ passport.use(
       try {
         // if the person signing in is the admin
         if (profile.id === '117028808660169665117') {
-          console.log('FINDING NONPROFIT');
           const existingNonprofit = await Nonprofit.findOne({
             googleId: profile.id
           });
