@@ -14,7 +14,9 @@ module.exports = app => {
   });
 
   app.post('/api/users/:id/items', requireLogin, async (req, res) => {
-    const { nonprofitId, amount, _id } = req.body;
+    const { item } = req.body;
+
+    const { nonprofitId, amount, _id } = item;
 
     const user = await User.findById(req.params.id);
 

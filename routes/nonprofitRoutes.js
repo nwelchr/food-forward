@@ -14,7 +14,9 @@ module.exports = app => {
   });
 
   app.post('/api/nonprofits/:id/items', requireLogin, async (req, res) => {
-    const { name, price, image, quota } = req.body;
+    const { item } = req.body;
+
+    const { name, price, image, quota } = item;
 
     const nonprofit = await Nonprofit.findById(req.params.id);
 
