@@ -37,12 +37,13 @@
 
 .list-icon {
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
+    filter: invert(1);
     background: url(http://res.cloudinary.com/dwanjkcku/image/upload/c_scale,w_60/v1532879617/ingredients-list.png);
     background-size: contain;
     background-repeat: no-repeat;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 
@@ -68,17 +69,21 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .cart-icon, .list-icon {
-        margin: 0px 5px; 
+    .list-icon {
+        margin: 0px 15px 0px 0px; 
+    }
+    .cart-icon {
+        margin: 0px 30px 0px 0px;
     }
     .user-profile {
         margin: 20px 40px; 
+        font-size: 1.7em;
     }
     .cart-icon-circle {
         width: 25px;
         height: 25px;
-        top: -8px;
-        right: 2px;
+        top: 0px;
+        right: 8px;
         text-align: center;
     }
     .cart-icon-number {

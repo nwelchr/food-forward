@@ -77,25 +77,27 @@ class Buyer extends React.Component {
       return (
           <div>
               <div className="buyer-nav">
-                  <div className="user-profile">{name}</div>
-                  <button className="change-item-button add">
-                    <a className="logout-btn" href="/auth/logout">
-                      {logout}
-                    </a>
-                  </button>
+                  <div className="user-profile">Hi, {name.split(' ')[0]}!</div>
+                  
                   <div className="rightbuyernav">
-                      <div className="list-icon" onClick={this.goToList}></div>
-                      <div onClick={this.toggleCheckout} className="cart-icon">
+                        <div className="list-icon" onClick={this.goToList}></div>
+                        <div onClick={this.toggleCheckout} className="cart-icon">
                           {icon}
-                  </div>
+                        </div>  
                   </div>
               </div>
               {renderModal}
               {bgModal}
               <BuyerIndexContainer/>
+              <button className="change-item-button add">
+                  <a className="logout-btn" href="/auth/logout">
+                      {logout}
+                  </a>
+              </button>
           </div>
       );
   }
+};
 
 
 export default Buyer;
