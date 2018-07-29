@@ -1,8 +1,28 @@
 body {
-  background: linear-gradient(-135deg, #eee, #fff);
-  width: 100vw;
-  height: 100vh;
+  background: linear-gradient(-45deg, #23a6d5, #20d2ab);
+  width: 100%;
+  height: 100%;
   user-select: none;
+}
+
+.logout-btn {
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: 'HelveticaNeue';
+  color: #444;
+}
+
+.button-nav {
+  display: flex;
+}
+
+.button-nav button {
+  margin: 10px;
 }
 
 .item-modal-screen {
@@ -11,18 +31,167 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.5);
   display: flex;
 }
 
 .item-modal {
+  position: relative;
   margin: auto;
-  width: 80%;
-  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  padding: 30px;
+  border: 2px dashed #ccc;
+  font-family: 'HelveticaNeue-Light';
+  width: 400px;
+}
+
+.dropzone-container {
+  margin-bottom: 20px;
+}
+
+.dropzone-container:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dropzone-container > div {
+  width: 75px !important;
+  height: 75px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropzone-container p {
+  font-size: 70px;
+  margin-top: -10px;
+  font-family: 'HelveticaNeue-UltraLight';
+}
+
+.add-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.paste-url {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'HelveticaNeue-Light';
+  font-size: 18px;
+}
+
+.paste-url p {
+  font-family: 'HelveticaNeue-Light';
+}
+
+.paste-url input {
+  padding: 5px;
+  font-size: 18px;
+  margin: 5px;
+  outline: 0;
+}
+
+.item-form input {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  font-size: 18px;
+  width: 100%;
+  padding: 5px;
+  font-family: 'HelveticaNeue-Light';
+}
+
+.preview-images {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
+}
+
+.preview-images img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+
+.one {
+  animation: fadein 3s ease forwards;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.preview-images img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.preview-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-btn {
+  width: 15px;
+  height: 15px;
+  filter: invert(1);
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  transform: scale(1);
+}
+
+.close-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transform: scale(0.95);
+}
+
+.find-image-btn {
+  position: absolute;
+  font-size: 35px;
+  font-family: 'HelveticaNeue-UltraLight';
+  margin: auto;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  outline: 0;
+  transform: scale(1);
+  border: 1px solid #999;
+}
+
+.find-image-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transform: scale(1.01);
+}
+
+.find-image-btn:active {
+  opacity: 0.95;
+  transform: scale(0.995);
+}
+
+.preview-image-placeholder {
+  height: 100px;
+  margin: 20px;
 }
 
 .non-profit-dashboard {
@@ -43,12 +212,13 @@ body {
 .non-profit-nav p {
   font-size: 40px;
   letter-spacing: -1px;
-  color: #888;
+  color: #eee;
   font-family: 'HelveticaNeue-Light';
 }
 
 .item-index-ul {
   width: 80%;
+  padding-bottom: 100px;
 }
 
 .name {
@@ -60,6 +230,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border: 2px solid #ccc;
   background: lightcoral;
   border-radius: 30px;
   object-fit: contain;
@@ -74,8 +245,14 @@ body {
   object-fit: cover;
 }
 
-.item-index-item td {
+.item-index-item td,
+.item-index-item p {
   font-family: 'HelveticaNeue-Light';
+}
+
+.item-index-item p {
+  text-align: center;
+  margin: 10px;
 }
 
 .name {

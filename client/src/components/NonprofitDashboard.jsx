@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import '../styles/nonprofit-dashboard.css';
@@ -21,6 +21,7 @@ class NonprofitDashboard extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.search = this.search.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.setInputImage = this.setInputImage.bind(this);
     this.openUpdateModal = this.openUpdateModal.bind(this);
@@ -52,7 +53,8 @@ class NonprofitDashboard extends React.Component {
             price: '',
             quota: '',
             updateItemId: '',
-            modalType: ''
+            modalType: '',
+            previewImages: ''
           });
         });
       }
@@ -63,7 +65,8 @@ class NonprofitDashboard extends React.Component {
           inputImageUrl: '',
           price: '',
           quota: '',
-          modalType: ''
+          modalType: '',
+          previewImages: ''
         })
       );
     }
@@ -124,6 +127,7 @@ class NonprofitDashboard extends React.Component {
 
   search(e) {
     e.preventDefault();
+    if (!this.state.name) return;
     const searchterm = this.state.name.split(' ').join('+');
     const scraper = async () => {
       const previewImages = [];
@@ -147,94 +151,103 @@ class NonprofitDashboard extends React.Component {
     scraper();
   }
 
+  closeModal() {
+    this.setState({
+      modalType: '',
+      name: '',
+      uploadImageUrl: '',
+      inputImageUrl: '',
+      price: '',
+      quota: '',
+      updateItemId: '',
+      modalType: '',
+      previewImages: ''
+    });
+  }
+
   renderModal() {
     return (
       <div className="item-modal-screen">
         <div className="item-modal">
-          <h1>Photo:</h1>
-          <Dropzone
-            multiple={false}
-            accept="image/*"
-            onDrop={this.onImageDrop.bind(this)}>
-            <div className="drop-zone-instructions">
-              <div>Add a Primary Photo</div>
-              <div>Drop an image or click to select a file to upload.</div>
-              <br />
-              <i className="fa fa-camera" aria-hidden="true" />
+          <img
+            onClick={this.closeModal}
+            className="close-btn"
+            src="https://res.cloudinary.com/dwanjkcku/image/upload/v1532872677/fkd0pfutax6wvecukx6d.png"
+          />
+          <div className="add-image">
+            <div
+              className="dropzone-container"
+              style={{
+                backgroundImage: `url('${this.state.uploadImageUrl}')`,
+                width: 80,
+                height: 80,
+                borderRadius: 10,
+                backgroundSize: 80,
+                opacity: 0.9
+              }}>
+              <Dropzone
+                multiple={false}
+                accept="image/*"
+                onDrop={this.onImageDrop.bind(this)}>
+                <p className="drop-zone-instructions">+</p>
+              </Dropzone>
             </div>
-          </Dropzone>
-          <div>
-            <strong>OR</strong> paste an image URL:
-            <input
-              type="text"
-              value={this.state.inputImageUrl}
-              onChange={this.update('inputImageUrl')}
-            />
+            <div className="paste-url">
+              <p>Or paste an image URL:</p>
+              <input
+                type="text"
+                value={this.state.inputImageUrl}
+                onChange={this.update('inputImageUrl')}
+                placeholder="http://www.google.com/the_most_amazing_image_ever.png"
+              />
+            </div>
           </div>
+          <form className="item-form" onSubmit={this.handleSubmit}>
+            <input
+              className="search"
+              type="text"
+              onChange={this.update('name')}
+              value={this.state.name}
+              placeholder="Item name"
+            />
 
-          {this.state.uploadImageUrl === '' ? null : (
-            <div>
-              <div className="image-upload">
-                <img src={this.state.uploadImageUrl} />
-                {this.props.formType === 'Create A Product' ? (
-                  <div>{this.state.uploadedFile.name}</div>
-                ) : null}
-              </div>
-              {this.state.image_url === '' ? null : (
-                <div className="image-upload">
-                  <div>
-                    <img src={this.state.image_url} />
-                  </div>
-                  {this.props.formType === 'Create A Product' ? (
-                    <div>{this.state.uploadedFile.name}</div>
-                  ) : null}
+            <div className="preview-image-wrapper">
+              {this.state.previewImages ? (
+                <div className="preview-images">
+                  {this.state.previewImages.map(img => (
+                    <img
+                      onClick={() => this.setInputImage(img)}
+                      className="one"
+                      style={{ width: 100 }}
+                      src={img}
+                    />
+                  ))}
                 </div>
+              ) : (
+                <Fragment>
+                  <button className="find-image-btn" onClick={this.search}>
+                    Find image
+                  </button>
+                  <div className="preview-image-placeholder" />
+                </Fragment>
               )}
             </div>
-          )}
 
-          <form className="itemForm" onSubmit={this.handleSubmit}>
-            <label>
-              Item Name:
-              <input
-                className="search"
-                type="text"
-                onChange={this.update('name')}
-                value={this.state.name}
-              />
-              <button onClick={this.search}>Find image</button>
-            </label>
+            <input
+              className="amount"
+              type="number"
+              onChange={this.update('quota')}
+              value={this.state.quota}
+              placeholder="Quota"
+            />
 
-            <div>
-              {this.state.previewImages &&
-                this.state.previewImages.map(img => (
-                  <img
-                    onClick={() => this.setInputImage(img)}
-                    style={{ width: 100 }}
-                    src={img}
-                  />
-                ))}
-            </div>
-
-            <label>
-              Quota :
-              <input
-                className="amount"
-                type="number"
-                onChange={this.update('quota')}
-                value={this.state.quota}
-              />
-            </label>
-
-            <label>
-              Item price :
-              <input
-                className="amount"
-                type="number"
-                onChange={this.update('price')}
-                value={this.state.price}
-              />
-            </label>
+            <input
+              className="amount"
+              type="number"
+              onChange={this.update('price')}
+              value={this.state.price}
+              placeholder="Price"
+            />
 
             <input type="submit" />
           </form>
@@ -251,10 +264,17 @@ class NonprofitDashboard extends React.Component {
     return (
       <div className="non-profit-dashboard">
         <nav className="non-profit-nav">
-          <p>Hello, Company Name!</p>
-          <button className="change-item-button add" onClick={this.openModal}>
-            Add Item
-          </button>
+          <p>Hello, {this.props.displayName}!</p>
+          <div className="button-nav">
+            <button className="change-item-button add">
+              <a className="logout-btn" href="/auth/logout">
+                Logout
+              </a>
+            </button>
+            <button className="change-item-button add" onClick={this.openModal}>
+              Add Item
+            </button>
+          </div>
         </nav>
 
         <ItemIndex
@@ -262,6 +282,7 @@ class NonprofitDashboard extends React.Component {
           openUpdateModal={this.openUpdateModal}
           items={this.props.items}
         />
+
         {this.state.modalType && this.renderModal()}
       </div>
     );

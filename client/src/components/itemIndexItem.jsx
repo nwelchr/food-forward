@@ -1,14 +1,25 @@
 import React from 'react';
 
 const ItemIndexItem = ({ item, openUpdateModal, deleteNonprofitItem }) => {
+  const amtRaised = item.amtRaised || 0;
   return (
-    <table className="item-index-item">
+    <tr className="item-index-item">
       <td>
         <img src={item.image} />
       </td>
       <td className="name">{item.name}</td>
-      <td>Quota: ${item.quota}</td>
-      <td>Price: ${item.price}</td>
+      <td>
+        <p>Quota:</p>
+        <p>${item.quota}</p>
+      </td>
+      <td>
+        <p>Remaining:</p>
+        <p>${item.quota - amtRaised}</p>
+      </td>
+      <td>
+        <p>Price:</p>
+        <p>${item.price}</p>
+      </td>
       <td>
         <button
           className="change-item-button update"
@@ -23,7 +34,7 @@ const ItemIndexItem = ({ item, openUpdateModal, deleteNonprofitItem }) => {
           Delete
         </button>
       </td>
-    </table>
+    </tr>
   );
 };
 
