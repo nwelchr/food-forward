@@ -1,4 +1,5 @@
 import React from 'react';
+import BuyerItem from "./BuyerItem";
 
 class Buyer extends React.Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Buyer extends React.Component {
     render() {
         return(
             <div>
-                hello!!!!
+                
             </div>
         );
     }
