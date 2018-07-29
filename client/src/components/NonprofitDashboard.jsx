@@ -19,6 +19,8 @@ class Company extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.search = this.search.bind(this);
+    this.setInputImage = this.setInputImage.bind(this);
   }
 
   componentDidMount() {
@@ -56,6 +58,13 @@ class Company extends React.Component {
       });
   }
 
+  setInputImage(image) {
+    this.setState({
+      inputImageUrl: image,
+      previewImages: ''
+    });
+  }
+
   onImageDrop(files) {
     this.setState({
       uploadedFile: files[0]
@@ -81,6 +90,31 @@ class Company extends React.Component {
         });
       }
     });
+  }
+
+  search(e) {
+    e.preventDefault();
+    const searchterm = this.state.name.split(' ').join('+');
+    const scraper = async () => {
+      const previewImages = [];
+      try {
+        const response = await fetch(
+          'https://www.googleapis.com/customsearch/v1?key=AIzaSyCx-iBb8GzDm7rJFpaubVGzZO4aPCX8sq0&cx=012673512427264311483:ortifcx9wgi&q=' +
+            searchterm +
+            '&searchType=image'
+        );
+        const image = await response.json();
+        for (let i = 0; i < 3; i++) {
+          previewImages.push(image.items[i].link);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      this.setState({ previewImages });
+    };
+
+    scraper();
   }
 
   render() {
@@ -135,7 +169,19 @@ class Company extends React.Component {
               onChange={this.update('name')}
               value={this.state.name}
             />
+            <button onClick={this.search}>Find image</button>
           </label>
+
+          <div>
+            {this.state.previewImages &&
+              this.state.previewImages.map(img => (
+                <img
+                  onClick={() => this.setInputImage(img)}
+                  style={{ width: 100 }}
+                  src={img}
+                />
+              ))}
+          </div>
 
           <label>
             Quota :
