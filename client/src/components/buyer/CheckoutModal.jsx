@@ -15,6 +15,14 @@ class CheckoutModal extends React.Component {
     this.checkout = this
       .checkout
       .bind(this);
+
+    this.totalCost = this
+      .totalCost
+      .bind(this);
+
+    this.printList = this
+      .printList
+      .bind(this);
   }
 
   generateItems() {
@@ -31,14 +39,26 @@ class CheckoutModal extends React.Component {
   }
 
   checkout() {
-
     this
       .props
       .checkout(this.props.user._id);
   }
 
+  printList() {}
+
+  totalCost() {
+    let sum = 0.00;
+    Object
+      .values(this.props.cart)
+      .forEach(item => {
+        sum += Number(item.price) * Number(item.amount);
+      });
+    return sum;
+  }
+
   render() {
     const items = this.generateItems();
+    const cost = this.totalCost();
     return (
       <div className="checkout-modal">
         <ul className="checkout-ul">
@@ -46,9 +66,10 @@ class CheckoutModal extends React.Component {
         </ul>
         <div className="checkout-total">
           <p>Total</p>
-          <p>$300.00</p>
+          <p>${cost}</p>
         </div>
         <div onClick={this.checkout} className="checkout-button">Checkout</div>
+        <div onClick={this.printList}>Shopping List</div>
       </div>
     );
   }
