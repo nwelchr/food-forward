@@ -1,4 +1,4 @@
-import React from "react";
+    import React from "react";
 
 class BuyerIndexItem extends React.Component {
     constructor(props) {
@@ -10,12 +10,18 @@ class BuyerIndexItem extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
+        this.increase = this.increase.bind(this); 
     }
 
     update(field) {
         return e => {
           this.setState({ [field]: e.target.value });
         };
+    }
+
+    increase(field) {
+        let newAmount = this.state.amount + 1; 
+        this.setState({ [field]: newAmount});
     }
 
     handleSubmit(e) {
@@ -37,31 +43,31 @@ class BuyerIndexItem extends React.Component {
 
     render() {
         return(
-            <li>
-                <ul>
-                    <li><img src={this.props.item.image} /></li>
-                    <li>{this.props.item.name}</li>
-                    <li>{this.props.item.price}</li>
-                    <li><form
-                        onSubmit={this.handleSubmit}
-                    >
-                        <label>
-                            Quantity: 
-                            <input
-                                type="number"
-                                min="1"
-                                step="1"
-                                value={this.state.amount}
-                                onChange={this.update("amount")}
-                            />
-                            
-                            <input
-                                type="submit"
-                                value="Add Item"
-                            />
-                        </label>
-                    </form></li>
-                </ul>
+            <li className="buyer-index-item">
+                <img className="itemImage" src={this.props.item.image} />
+                <p className="itemPrice">${this.props.item.price}</p>
+                <p className="itemName">{this.props.item.name}</p>
+                <div onClick={() => this.increase("amount")} className="addItemBtn">
+                    <p>Add Item</p>
+                    <div className="AddQ">{this.state.amount}</div>
+                </div> 
+                <form className="hideme" onSubmit={this.handleSubmit}>
+                    <label>
+                        Quantity: 
+                        <input
+                            type="number"
+                            min="1"
+                            step="1"
+                            value={this.state.amount}
+                            placeholder="Quantity"
+                            onChange={this.update("amount")}
+                        />
+                        <input
+                            type="submit"
+                            value="Add Item"
+                        />
+                    </label>
+                </form>
             </li>
         );
     }

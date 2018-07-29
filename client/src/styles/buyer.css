@@ -1,7 +1,8 @@
 .buyer-nav {
     position: sticky; 
+    top: 0;
     height: 15vh;
-    /* background-color: rgba(0, 0, 0, 0.1); */
+    background-color: rgba(255, 255, 255, 0.95);
     display: -ms-flexbox;
     display: flex;
     align-items: center;
@@ -54,12 +55,4 @@
     .user-profile {
         margin: 20px 40px; 
     }
-}
-
-.blur-filter {
-    height: 15vh;
-    position: absolute;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.08);
-    filter: blur(10px);
 }

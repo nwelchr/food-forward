@@ -31,7 +31,6 @@ class Buyer extends React.Component {
                   <div className="cart-icon-number">2</div>
                 </div>
               </div>
-              <div className="blur-filter" />
             </div>
             <BuyerIndexContainer />
 

@@ -27,7 +27,7 @@ class BuyerIndex extends React.Component {
 
         return(
             <div>
-                <ul>
+                <ul className="buyerIndex">
                     {items}
                 </ul>
             </div>

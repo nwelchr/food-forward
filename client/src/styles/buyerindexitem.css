@@ -1,0 +1,71 @@
+.buyerIndex {
+    display: flex;
+    flex-wrap: wrap; 
+}
+.buyer-index-item {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    box-shadow: 5px 7px 18px rgba(20, 20, 20, 0.4)
+}
+
+.buyer-index-item p {
+    font-size: 2.2em; 
+    align-self: center;
+}
+.itemImage {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+p.itemName{
+    transform: translateY(-50px);
+}
+p.itemPrice {
+    padding: 20px 20px 30px;
+    background-color: white;
+    border-radius: 50%;
+    border-color: rgba(0, 0, 0, 0);
+    transform: translateY(-35px);
+    font-size: 2em;
+}
+.addItemBtn {
+    background: -webkit-linear-gradient( rgb(40, 40, 60), rgb(0, 0, 0));
+    color: white;
+    align-self: center;
+    width: 300px;
+    padding: 10px 1px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -40px;
+}
+
+.addItemBtn p {
+    font-size: 1.3em;
+}
+
+.AddQ {
+    background: white;
+    font-size: 1.5em;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    float: right;
+    border-radius: 2px;
+    margin-left: 10px;
+}
+
+.hideme {
+    display: none; 
+}
