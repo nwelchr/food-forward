@@ -13,9 +13,9 @@ module.exports = app => {
     passport.authenticate('google'),
     (req, res) => {
       if (req.user._id === '5b5d010445f9e8378e995b97') {
-        return res.redirect(`/dashboard`);
+        return res.redirect(`/nonprofit_dashboard`);
       }
-      res.redirect(`/dashboard`);
+      res.redirect(`/user_dashboard`);
     }
   );
 

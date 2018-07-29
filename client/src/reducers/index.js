@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { reducer as reduxForm } from 'redux-form';
 import authReducer from './authReducer';
-import blogsReducer from './blogsReducer';
 import cartReducer from "./cartReducer";
+import nonprofitItemsReducer from './nonprofitItemsReducer';
 
 export default combineReducers({
   auth: authReducer,
   form: reduxForm,
-  blogs: blogsReducer,
+  nonprofits: nonprofitItemsReducer,
   cart: cartReducer
 });
