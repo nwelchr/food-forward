@@ -20,14 +20,12 @@ class App extends Component {
           <div>
             {/* <Header /> */}
             <Switch>
-              <Route
-                path="/nonprofit_dashboard"
-                component={NonprofitDashboardContianer}
-              />
+              <Route exact path="/" component={Landing} />
+              <Route path="/nonprofit_dashboard" component={NonprofitDashboardContianer} />
 
               {/* TIFFANY AND JON JUST CHANGE THIS*/}
               <Route path="/user_dashboard" component={BuyerContainer} />
-              <Route path="/" component={Landing} />
+              
             </Switch>
           </div>
         </BrowserRouter>

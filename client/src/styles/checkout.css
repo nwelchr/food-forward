@@ -1,0 +1,99 @@
+.checkout-modal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+.checkout-ul {
+    max-height: 270px;
+    overflow-y: auto;
+    
+}
+.checkout-ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 5px;
+}
+
+.checkout-ul::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, .5);
+    /* -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5); */
+}
+.checkout-item {
+    display: flex;
+    height: 90px; 
+    align-items: center;
+}
+.checkout-image {
+    width: 60px;
+    height: 70px;
+    margin: 5px;
+    margin-left: 15px; 
+    background-color: gray;
+    flex: 1;
+}
+.checkout-item-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 1.4;
+    margin-left: 10px;
+}
+.c-i-name {
+    font-size: 1em; 
+    color: blue; 
+    text-align: left; 
+}
+.c-i-cost {
+    font-size: 1.5em;
+    color: black;
+    text-align: left; 
+}
+.checkout-quantity {
+    display: flex;
+    flex: 1; 
+}
+.co-decriment {
+    color: lightblue; 
+    cursor: pointer; 
+}
+.co-num {
+    color: gray; 
+    margin: 0px 10px;
+    font-size: 1.1em;
+}
+.co-increment {
+    color: lightblue; 
+    align-self: center;
+    cursor: pointer;
+}
+.checkout-remove {
+    color:darkgray;
+    margin-right: 20px; 
+    cursor: pointer; 
+}
+.checkout-total {
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 2em;
+    color: lightblue;
+    margin: 10px 30px 25px;
+}
+.checkout-button {
+    background-color: skyblue;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    align-items: center;
+    font-size: 2.1em;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor: pointer; 
+}
