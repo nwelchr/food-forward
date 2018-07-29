@@ -2,7 +2,7 @@ import React from 'react';
 import Dropzone from "react-dropzone";
 import request from "superagent";
 
-import itemsIndexComponent from './itemIndex';
+import ItemIndex from './itemIndex';
 const CLOUDINARY_UPLOAD_PRESET = "zfgcp1tk";
 const CLOUDINARY_UPLOAD_URL =
   "https://api.cloudinary.com/v1_1/dwanjkcku/upload";
@@ -123,11 +123,21 @@ class Company extends React.Component {
                onCHange={this.update('quota')}/>
            </label>
 
+           <label>
+             Item Cost :
+             <input
+               className='amount'
+               type="number"
+               onCHange={this.update('item_cost')}/>
+           </label>
+
 
            <input type='submit'/>
          </form>
 
-        <itemsIndexComponent />
+        <ItemIndex 
+          items={this.props.items}
+        />
 
      </div>
    );
@@ -135,4 +145,4 @@ class Company extends React.Component {
 }
 
 
-export default Company;
+export default Company
