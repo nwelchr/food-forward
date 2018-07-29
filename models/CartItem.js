@@ -7,6 +7,7 @@ const cartItemSchema = new Schema({
   amount: Number,
   image: String,
   price: Number,
+  name: String,
   createdAt: {
     type: Date,
     default: Date.now
