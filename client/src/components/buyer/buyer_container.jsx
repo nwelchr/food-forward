@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
-// import { fetchItems, updateItem } from '../../actions/castle_actions';
-
+import { fetchNonprofitItems, fetchCart, addCartItem, updateCartItem } from "../../actions/index";
 import Buyer from './Buyer';
 
-const mapStateToProps = state => ({
-  // items: state.items,
-  items: {1: {id: 1, name: "banana", price: 20.00, quota: 500, image:'url'}}
+const mapStateToProps = (state, ownProps) => ({
+    cart: state.cart
 });
 
 const mapDispatchToProps = dispatch => ({
-  // fetchItems: () => dispatch(fetchItems()),
-  // updateItem: (item) => dispatch(updateItem())
+    fetchNonprofitItems: id => dispatch(fetchNonprofitItems(id)), 
+    fetchCart: id => dispatch(fetchCart(id)), 
+    addCartItem: (id, item) => dispatch(addCartItem(id, item)), 
+    updateCartItem: (id, item) => dispatch(updateCartItem(id, item))
 });
 
 export default connect(
