@@ -23,7 +23,10 @@ class App extends Component {
             <Header />
             <Switch>
               <Route path="/nonprofit_dashboard" component={CompanyContainer} />
+
+              {/* TIFFANY AND JON JUST CHANGE THIS*/}
               <Route path="/user_dashboard" component={UserDashboard} />
+
               <Route path="/blogs/new" component={BlogNew} />
               <Route exact path="/blogs/:_id" component={BlogShow} />
               <Route path="/blogs" component={Dashboard} />
