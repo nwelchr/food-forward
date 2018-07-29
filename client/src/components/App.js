@@ -8,8 +8,7 @@ import Header from './Header';
 
 import Landing from './Landing.jsx';
 import CompanyContainer from './company_container';
-import UserDashboard from './UserDashboard';
-
+import BuyerContainer from "./buyer/BuyerContainer";
 
 class App extends Component {
   componentDidMount() {
@@ -26,7 +25,7 @@ class App extends Component {
               <Route path="/nonprofit_dashboard" component={CompanyContainer} />
 
               {/* TIFFANY AND JON JUST CHANGE THIS*/}
-              <Route path="/user_dashboard" component={UserDashboard} />
+              <Route path="/user_dashboard" component={BuyerContainer} />
               <Route path="/" component={Landing} />
             </Switch>
           </div>
