@@ -5,9 +5,9 @@
     background-size: cover;
     /* transition: background-image 4s ease; */
     -webkit-backface-visibility: hidden;
-    -webkit-animation: Multibackground 10s ease-in-out infinite ;
-    -moz-animation: Multibackground 10s ease-in-out infinite;
-    animation: Multibackground 10s ease-in-out infinite;
+    -webkit-animation: Multibackground 16s linear infinite;
+    -moz-animation: Multibackground 16s linear infinite;
+    animation: Multibackground 16s linear infinite;
     /* animation-direction: alternate; */
 }
 
@@ -17,14 +17,18 @@
         background-size: cover;
     }
 
-    50% {
+    33% {
       background: url(http://res.cloudinary.com/doohtqbau/image/upload/v1532881968/rice_u44yog.jpg) no-repeat center fixed;
       background-size: cover;
     }
 
+    66% {
+        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
+        background-size: cover;
+    }
 
     100% {
-        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
+        background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed;
         background-size: cover;
     }
 
@@ -37,35 +41,43 @@
       background-size: cover;
   }
 
-  50% {
+  33% {
     background: url(http://res.cloudinary.com/doohtqbau/image/upload/v1532881968/rice_u44yog.jpg) no-repeat center fixed;
     background-size: cover;
   }
 
+  66% {
+      background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
+      background-size: cover;
+  }
 
   100% {
-      background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
+      background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed;
       background-size: cover;
   }
 }
 
 @keyframes Multibackground {
 
-      0% {
-          background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed;
-          background-size: cover;
-      }
+  0% {
+      background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed;
+      background-size: cover;
+  }
 
-      50% {
-        background: url(http://res.cloudinary.com/doohtqbau/image/upload/v1532881968/rice_u44yog.jpg) no-repeat center fixed;
-        background-size: cover;
-      }
+  33% {
+    background: url(http://res.cloudinary.com/doohtqbau/image/upload/v1532881968/rice_u44yog.jpg) no-repeat center fixed;
+    background-size: cover;
+  }
 
+  66% {
+      background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
+      background-size: cover;
+  }
 
-      100% {
-          background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822833/bread.jpg) no-repeat center fixed;
-          background-size: cover;
-      }
+  100% {
+      background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed;
+      background-size: cover;
+  }
 }
 
 .landing-title {
