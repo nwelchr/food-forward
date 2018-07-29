@@ -14,32 +14,36 @@ module.exports = app => {
   });
 
   app.post('/api/items', requireLogin, async (req, res) => {
-    const { item } = req.body;
+    const item = req.body;
 
     const { name, price, image, quota } = item;
 
-    const nonprofit = await Nonprofit.findById(req.params.id);
+    const nonprofit = await Nonprofit.findById(req.user._id);
 
-    const newItem = new Item({ name, price, image, quota });
+    const _id = new ObjectId();
 
-    newItem._id = new ObjectId();
+    let newItem = new Item({ name, price, image, quota, _id });
 
     try {
-      nonprofit.items[newItem._id] = newItem;
-      await nonprofit.save();
+      nonprofit.items = {
+        ...nonprofit.items,
+        [newItem._id]: newItem
+      };
 
+      await nonprofit.save();
       res.send(newItem);
     } catch (err) {
+      console.log(err);
       res.send(400, err);
     }
   });
 
-  app.put('/api/nonprofits/:id/items', requireLogin, async (req, res) => {
+  app.put('/api/items', requireLogin, async (req, res) => {
     const { item } = req.body;
 
     const itemId = item._id;
 
-    const nonprofit = await Nonprofit.findById(req.params.id);
+    const nonprofit = await Nonprofit.findById(req.user._id);
 
     try {
       nonprofit.items[itemId] = item;
@@ -51,13 +55,16 @@ module.exports = app => {
     }
   });
 
-  app.delete('/api/nonprofits/:id/items', requireLogin, async (req, res) => {
-    const { _id } = req.body;
+  app.delete('/api/items/:id', requireLogin, async (req, res) => {
+    const { id } = req.params;
 
-    const nonprofit = await Nonprofit.findById(req.params.id);
+    const nonprofit = await Nonprofit.findById(req.user._id);
 
     try {
-      delete nonprofit.items[_id];
+      const newItems = { ...nonprofit.items };
+      const item = newItems[id];
+      delete newItems[id];
+      nonprofit.items = newItems;
       await nonprofit.save();
 
       res.send(item);

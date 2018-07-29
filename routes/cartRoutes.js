@@ -14,7 +14,7 @@ module.exports = app => {
   });
 
   app.post('/api/users/:id/items', requireLogin, async (req, res) => {
-    const { item } = req.body;
+    const item = req.body;
 
     const { nonprofitId, amount, _id } = item;
 
@@ -33,7 +33,7 @@ module.exports = app => {
   });
 
   app.put('/api/users/:id/items', requireLogin, async (req, res) => {
-    const { item } = req.body;
+    const item = req.body;
 
     const user = await User.findById(req.params.id);
 
@@ -48,12 +48,15 @@ module.exports = app => {
   });
 
   app.delete('/api/users/:id/items', requireLogin, async (req, res) => {
-    const { _id } = req.body;
+    const _id = req.body;
 
     const user = await User.findById(req.params.id);
 
     try {
-      delete user.cart[_id];
+      const cart = { ...user.cart };
+      const item = cart[_id];
+      delete cart[_id];
+      user.cart = cart;
       await user.save();
 
       res.send(item);

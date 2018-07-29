@@ -21,13 +21,12 @@ class Company extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // componentDidMount(){
-  //   this.props.fetchItems();
-  // }
+  componentDidMount() {
+    this.props.fetchNonprofitItems();
+  }
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     const { name, quota, uploadImageUrl, inputImageUrl, cost } = this.state;
     const image = uploadImageUrl || inputImageUrl;
     if (name && quota && cost && image) {
@@ -37,14 +36,16 @@ class Company extends React.Component {
         cost,
         image
       };
-      await this.props.createNonprofitItem(item);
-      this.setState({
-        name: '',
-        uploadImageUrl: '',
-        inputImageUrl: '',
-        cost: '',
-        quota: ''
-      });
+      const that = this;
+      this.props.createNonprofitItem(item).then(() =>
+        that.setState({
+          name: '',
+          uploadImageUrl: '',
+          inputImageUrl: '',
+          cost: '',
+          quota: ''
+        })
+      );
     }
   }
 
@@ -83,13 +84,7 @@ class Company extends React.Component {
   }
 
   render() {
-    console.log(this.props, this.state);
-    //   if (Object.keys(this.props.items).length === 0) {
-    //     return (
-    //    <p>Loading...</p>
-    //    );
-    //  }
-    //  const featuredItems = Object.values(this.props.items);
+    console.log(this.state, 'NEW STATE!');
     return (
       <div>
         <nav>
