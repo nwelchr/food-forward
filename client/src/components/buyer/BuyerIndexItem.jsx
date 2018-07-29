@@ -31,8 +31,9 @@ class BuyerIndexItem extends React.Component {
             amount: this.state.amount,
             _id: this.props.item._id,
         };
+
         if (this.state.inCart) {
-            item.amount = this.props.cart.amount + this.state.amount;
+            item.amount = Number(this.props.cart.amount) + Number(this.state.amount);
             this.props.updateCartItem(this.props.user._id, item);
         } else {
             this.props.addCartItem(this.props.user._id, item);
@@ -42,6 +43,7 @@ class BuyerIndexItem extends React.Component {
     }
 
     render() {
+
         return(
             <li className="buyer-index-item">
                 <img className="itemImage" src={this.props.item.image} />
