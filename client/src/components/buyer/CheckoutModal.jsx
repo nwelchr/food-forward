@@ -76,7 +76,7 @@ class CheckoutModal extends React.Component {
         </ul>
         <div className="checkout-total">
           <p>Total</p>
-          <p>${cost}</p>
+          <p>${cost.toFixed(2)}</p>
         </div>
         <div onClick={this.checkout} className="checkout-button">Checkout</div>
       </div>
