@@ -7,7 +7,7 @@
 }
 
 .logout-btn {
-  border-radius: 5px;
+  border-radius: 50%;
   width: 65px;
   height: 65px;
   display: flex;
@@ -15,7 +15,7 @@
   align-items: center;
   text-decoration: none;
   font-family: 'HelveticaNeue';
-  color: white;
+  color: #444;
 }
 
 .button-nav {
@@ -262,27 +262,24 @@
 }
 
 .change-item-button {
-  /* border-radius: 50%; */
-  width: 120px;
+  border-radius: 50%;
+  width: 65px;
   height: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* outline: 0; */
-  /* transform: scale(1); */
-  /* border: 0; */
-  font-size: 2em;
-  /* letter-spacing: -0.2px; */
-  background-color: rgba(0,0,0,0.8);
+  outline: 0;
+  transform: scale(1);
+  border: 0;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  color: #444;
 }
 
 .change-item-button.add {
-  margin: 20px auto;
-  width: 130px;
+  border: 1px solid #ccc;
+  width: 80px;
   height: 80px;
-  display: flex;
-  align-self: center;
-  color: white;
 }
 
 .change-item-button.add:hover {
@@ -290,7 +287,7 @@
 }
 
 .change-item-button.add:active {
-  /* border: 1px solid #ccc; */
+  border: 1px solid #ccc;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 

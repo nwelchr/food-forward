@@ -89,8 +89,8 @@ class Buyer extends React.Component {
               {renderModal}
               {bgModal}
               <BuyerIndexContainer/>
-              <button className="change-item-button add">
-                  <a className="logout-btn" href="/auth/logout">
+              <button className="buyer-logout">
+                  <a className="buyer-logout-btn" href="/auth/logout">
                       {logout}
                   </a>
               </button>

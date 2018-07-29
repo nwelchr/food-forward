@@ -68,6 +68,34 @@
     text-align: center;
 }
 
+.buyer-logout {
+  /* border-radius: 50%; */
+  width: 120px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* outline: 0; */
+  /* transform: scale(1); */
+  /* border: 0; */
+  font-size: 2em;
+  /* letter-spacing: -0.2px; */
+  background-color: rgba(0,0,0,0.8);
+  margin: 20px auto;
+}
+
+.buyer-logout-btn {
+    border-radius: 5px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: 'HelveticaNeue';
+    color: white;
+}
+
 @media only screen and (max-width: 600px) {
     .list-icon {
         margin: 0px 15px 0px 0px; 
