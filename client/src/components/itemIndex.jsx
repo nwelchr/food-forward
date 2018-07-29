@@ -18,11 +18,7 @@ class ItemIndex extends React.Component {
       );
     });
 
-    return (
-      <div>
-        <ul>{items}</ul>
-      </div>
-    );
+    return <ul className="item-index-ul">{items}</ul>;
   }
 }
 

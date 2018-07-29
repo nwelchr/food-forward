@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
+import '../styles/nonprofit-dashboard.css';
 
 import ItemIndex from './itemIndex';
 const CLOUDINARY_UPLOAD_PRESET = 'zfgcp1tk';
@@ -84,7 +85,6 @@ class NonprofitDashboard extends React.Component {
 
   openUpdateModal(item) {
     const { name, quota, price, image: inputImageUrl, _id } = item;
-    console.log(item);
     this.setState({
       modalType: 'update',
       name,
@@ -150,7 +150,7 @@ class NonprofitDashboard extends React.Component {
   renderModal() {
     return (
       <div className="item-modal-screen">
-        <div className="product-image-upload">
+        <div className="item-modal">
           <h1>Photo:</h1>
           <Dropzone
             multiple={false}
@@ -194,7 +194,6 @@ class NonprofitDashboard extends React.Component {
           )}
 
           <form className="itemForm" onSubmit={this.handleSubmit}>
-            <div className="ItemErros">Errors</div>
             <label>
               Item Name:
               <input
@@ -250,20 +249,20 @@ class NonprofitDashboard extends React.Component {
 
   render() {
     return (
-      <div>
-        <nav>
-          <div> Company Name </div>
+      <div className="non-profit-dashboard">
+        <nav className="non-profit-nav">
+          <p>Hello, Company Name!</p>
+          <button className="change-item-button add" onClick={this.openModal}>
+            Add Item
+          </button>
         </nav>
-
-        <button onClick={this.openModal}>Add Item</button>
-
-        {this.state.modalType && this.renderModal()}
 
         <ItemIndex
           deleteNonprofitItem={this.props.deleteNonprofitItem}
           openUpdateModal={this.openUpdateModal}
           items={this.props.items}
         />
+        {this.state.modalType && this.renderModal()}
       </div>
     );
   }
