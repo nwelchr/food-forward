@@ -7,6 +7,7 @@ import Header from './Header';
 import Landing from './Landing.jsx';
 import NonprofitDashboardContianer from './NonprofitDashboardContainer';
 import BuyerContainer from './buyer/BuyerContainer';
+import ShoppingListContainer from "./ShoppingListContainer";
 
 class App extends Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
 
               {/* TIFFANY AND JON JUST CHANGE THIS*/}
               <Route path="/user_dashboard" component={BuyerContainer} />
-              
+              <Route path="/shoppingList" component={ShoppingListContainer}/>
             </Switch>
           </div>
         </BrowserRouter>

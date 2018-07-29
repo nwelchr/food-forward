@@ -55,8 +55,11 @@ class Buyer extends React.Component {
             <div>
                 <div className="buyer-nav">
                     <div className="user-profile">{name}</div>
-                    <div onClick={this.toggleCheckout} className="cart-icon">
-                        {icon}
+        
+                        <div className="list-icon" onClick={() => this.ownProps.history.push("/shoppingList")}></div>
+                        <div onClick={this.toggleCheckout} className="cart-icon">
+                            {icon}
+                 
                     </div>
                     <div className="blur-filter"/>
                 </div>
