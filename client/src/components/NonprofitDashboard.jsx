@@ -107,7 +107,7 @@ class Company extends React.Component {
                 <div>Add a Primary Photo</div>
                 <div>Drop an image or click to select a file to upload.</div>
                 <br />
-                <i className="fa fa-camera" aria-hidden="true" />
+                <i className="fa fa-camera-retro" aria-hidden="true"></i>
               </div>
             </Dropzone>
               <div>
