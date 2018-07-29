@@ -262,28 +262,32 @@ class NonprofitDashboard extends React.Component {
 
   render() {
     return (
-      <div className="non-profit-dashboard">
-        <nav className="non-profit-nav">
-          <p>Hello, {this.props.displayName}!</p>
-          <div className="button-nav">
-            <button className="change-item-button add">
-              <a className="logout-btn" href="/auth/logout">
-                Logout
-              </a>
-            </button>
-            <button className="change-item-button add" onClick={this.openModal}>
-              Add Item
-            </button>
-          </div>
-        </nav>
+      <div className="body-wrapper">
+        <div className="non-profit-dashboard">
+          <nav className="non-profit-nav">
+            <p>Hello, {this.props.displayName}!</p>
+            <div className="button-nav">
+              <button className="change-item-button add">
+                <a className="logout-btn" href="/auth/logout">
+                  Logout
+                </a>
+              </button>
+              <button
+                className="change-item-button add"
+                onClick={this.openModal}>
+                Add Item
+              </button>
+            </div>
+          </nav>
 
-        <ItemIndex
-          deleteNonprofitItem={this.props.deleteNonprofitItem}
-          openUpdateModal={this.openUpdateModal}
-          items={this.props.items}
-        />
+          <ItemIndex
+            deleteNonprofitItem={this.props.deleteNonprofitItem}
+            openUpdateModal={this.openUpdateModal}
+            items={this.props.items}
+          />
 
-        {this.state.modalType && this.renderModal()}
+          {this.state.modalType && this.renderModal()}
+        </div>
       </div>
     );
   }
