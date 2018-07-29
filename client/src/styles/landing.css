@@ -3,14 +3,11 @@
     width: inherit;
     /* background: url(http://res.cloudinary.com/mpompili/image/upload/v1532822825/grapes.jpg) no-repeat center fixed; */
     background-size: cover;
-    transition: background-image 4s linear;
-    /* -webkit-animation-delay: 4s;
-    animation-delay: 4s ; */
-     /* animation-fill-mode: forwards; */
+    /* transition: background-image 4s ease; */
     -webkit-backface-visibility: hidden;
-    -webkit-animation: Multibackground 10s ease infinite ;
-    -moz-animation: Multibackground 10s ease infinite;
-    animation: Multibackground 10s ease infinite;
+    -webkit-animation: Multibackground 10s ease-in-out infinite ;
+    -moz-animation: Multibackground 10s ease-in-out infinite;
+    animation: Multibackground 10s ease-in-out infinite;
     /* animation-direction: alternate; */
 }
 
