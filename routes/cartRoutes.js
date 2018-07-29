@@ -20,13 +20,17 @@ module.exports = app => {
 
     const user = await User.findById(req.params.id);
 
-    const item = new CartItem({ nonprofitId, amount, _id });
+    const newItem = new CartItem({ nonprofitId, amount, _id });
 
     try {
-      user.cart[item._id] = item;
+      user.cart[newItem._id] = newItem;
       await user.save();
 
+<<<<<<< HEAD
       res.send(user.cart);
+=======
+      res.send(newItem);
+>>>>>>> master
     } catch (err) {
       res.send(400, err);
     }
