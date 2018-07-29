@@ -19,9 +19,6 @@ module.exports = app => {
       const nonprofit = await Nonprofit.findById(cartItem.nonprofitId);
       const nonprofitItem = nonprofit.items[cartItem._id];
       const calculatedPrice = nonprofitItem.price * cartItem.amount;
-      nonprofitItem.amtRaised = String(
-        Number(calculatedPrice) + Number(nonprofitItem.amtRaised)
-      );
       // nonprofit.items[cartItem._id] = nonprofitItem;
       try {
         const newItems = {
@@ -30,8 +27,9 @@ module.exports = app => {
         const newItem = {
           ...nonprofitItem
         };
-        newItem.amtRaised =
-          Number(calculatedPrice) + Number(nonprofitItem.amtRaised);
+        newItem.amtRaised = Number(calculatedPrice);
+        if (!isNaN(nonprofitItem.amtRaised))
+          newItem.amtRaised += Number(nonprofitItem.amtRaised);
         newItems[cartItem._id] = newItem;
         nonprofit.items = newItems;
         await nonprofit.save();

@@ -44,7 +44,7 @@ class CheckoutItem extends React.Component {
         <img src={image} className="checkout-image" />
         <div className="checkout-item-details">
           <div className="c-i-name">{name}</div>
-          <div className="c-i-cost">${price}</div>
+          <div className="c-i-cost">${price.toFixed(2)}</div>
         </div>
         <div className="checkout-quantity">
           <div onClick={() => this.update(-1)} className="co-decriment">
