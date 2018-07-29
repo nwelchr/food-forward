@@ -58,7 +58,7 @@ class Buyer extends React.Component {
             : '';
 
         const logout = this.props.user
-            ? 'log out'
+            ? 'Logout'
             : '';
 
         const cartCount = Object
@@ -77,7 +77,7 @@ class Buyer extends React.Component {
             <div>
                 <div className="buyer-nav">
                     <div className="user-profile">{name}</div>
-                    <button className="change-item-button add"><a className="logout-btn" href={'/auth/logout'}> logout</a> </button>
+                    <button className="change-item-button add"><a className="logout-btn" href={'/auth/logout'}> Logout</a> </button>
                     <div onClick={this.toggleCheckout} className="cart-icon">
                         {icon}
                     </div>
