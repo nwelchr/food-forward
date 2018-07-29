@@ -48,12 +48,13 @@
 }
 .checkout-ul::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 5px;
+    width: 3px;
+    /* color: skyblue; */
 }
 
 .checkout-ul::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(103, 205, 255, .7);
     /* -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5); */
 }
 .checkout-item {
@@ -92,7 +93,7 @@
     flex: 1; 
 }
 .co-decriment {
-    color: lightblue; 
+    color: skyblue; 
     cursor: pointer; 
 }
 .co-num {
@@ -101,22 +102,23 @@
     font-size: 1.1em;
 }
 .co-increment {
-    color: lightblue; 
+    color: skyblue; 
     align-self: center;
     cursor: pointer;
 }
 .checkout-remove {
-    color:darkgray;
+    color:rgba(100, 200, 255, .9);
     margin-right: 20px; 
     cursor: pointer; 
 }
 .checkout-total {
+    border-top: 2px dashed rgba(135, 205, 255, 0.3);
+    padding: 25px;
+    margin-top: 2px;
     display: flex;
-    -ms-flex-pack: justify;
     justify-content: space-between;
     font-size: 2em;
     color: lightblue;
-    margin: 15px 30px 25px;
 }
 .checkout-button {
     background-color: skyblue;
