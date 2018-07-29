@@ -4,12 +4,9 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
-
-
 import Landing from './Landing.jsx';
-import CompanyContainer from './company_container';
-import UserDashboard from './UserDashboard';
-
+import NonprofitDashboardContianer from './NonprofitDashboardContainer';
+import BuyerContainer from './buyer/BuyerContainer';
 
 class App extends Component {
   componentDidMount() {

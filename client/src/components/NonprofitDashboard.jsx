@@ -13,18 +13,39 @@ class Company extends React.Component {
     this.state = {
       name: '',
       quota: '',
-      image_url: '',
-      item_cost: ''
+      uploadImageUrl: '',
+      inputImageUrl: '',
+      cost: ''
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // componentDidMount(){
   //   this.props.fetchItems();
   // }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    this.props.updateItem(this.state);
+    console.log(this.state);
+    const { name, quota, uploadImageUrl, inputImageUrl, cost } = this.state;
+    const image = uploadImageUrl || inputImageUrl;
+    if (name && quota && cost && image) {
+      const item = {
+        name,
+        quota,
+        cost,
+        image
+      };
+      await this.props.createNonprofitItem(item);
+      this.setState({
+        name: '',
+        uploadImageUrl: '',
+        inputImageUrl: '',
+        cost: '',
+        quota: ''
+      });
+    }
   }
 
   update(field) {
@@ -55,14 +76,14 @@ class Company extends React.Component {
 
       if (response.body.secure_url !== '') {
         this.setState({
-          image_url: response.body.secure_url
+          uploadImageUrl: response.body.secure_url
         });
       }
     });
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props, this.state);
     //   if (Object.keys(this.props.items).length === 0) {
     //     return (
     //    <p>Loading...</p>
@@ -90,54 +111,104 @@ class Company extends React.Component {
               </div>
             </Dropzone>
             <div>
-              {this.state.image_url === '' ? null : (
+              <strong>OR</strong> paste an image URL:
+              <input
+                type="text"
+                value={this.state.inputImageUrl}
+                onChange={this.update('inputImageUrl')}
+              />
+            </div>
+            <div>
+              {this.state.uploadImageUrl === '' ? null : (
                 <div className="image-upload">
                   <div>
-                    <img src={this.state.image_url} />
+                    <img src={this.state.uploadImageUrl} />
                   </div>
                   {this.props.formType === 'Create A Product' ? (
                     <div>{this.state.uploadedFile.name}</div>
                   ) : null}
                 </div>
-              )}
+              </Dropzone>
+              <div>
+                {this.state.image_url === '' ? null : (
+                  <div className="image-upload">
+                    <div>
+                      <img src={this.state.image_url} />
+                    </div>
+                    {this.props.formType === 'Create A Product' ? (
+                      <div>{this.state.uploadedFile.name}</div>
+                    ) : null}
+                  </div>
+                )}
+              </div>
             </div>
-          </div> 
+            <form className="itemForm" onSubmit={this.handleSubmit}>
+              <div className="ItemErros">Errors</div>
+              <label>
+                {/* Item Name: */}
+                <input
+                  className="search"
+                  type="text"
+                  placeholder="Item Name"
+                  onChange={this.update('name')}
+                />
+              </label>
+
+              <label>
+                {/* Quota : */}
+                <input
+                  className="amount"
+                  type="number"
+                  placeholder="Quota"
+                  onCHange={this.update('quota')}
+                />
+              </label>
+
+              <label>
+                {/* Item Cost : */}
+                <input
+                  className="amount"
+                  type="number"
+                  placeholder="Item Cost"
+                  onCHange={this.update('item_cost')}
+                />
+              </label>
+
+              <input type="submit" />
+            </form>
+          </div>
           <form className="itemForm" onSubmit={this.handleSubmit}>
             <div className="ItemErros">Errors</div>
             <label>
-              {/* Item Name: */}
+              Item Name:
               <input
                 className="search"
                 type="text"
-                placeholder="Item Name"
                 onChange={this.update('name')}
               />
             </label>
 
             <label>
-              {/* Quota : */}
+              Quota :
               <input
                 className="amount"
                 type="number"
-                placeholder="Quota"
                 onCHange={this.update('quota')}
               />
             </label>
 
             <label>
-              {/* Item Cost : */}
+              Item Cost :
               <input
                 className="amount"
                 type="number"
-                placeholder="Item Cost"
-                onCHange={this.update('item_cost')}
+                onCHange={this.update('cost')}
               />
             </label>
 
             <input type="submit" />
           </form>
-        </div>
-
+        </div> 
         <ItemIndex items={this.props.items} />
       </div>
     );
