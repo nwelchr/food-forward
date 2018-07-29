@@ -7,14 +7,19 @@ const Item = mongoose.model('Item');
 const CartItem = mongoose.model('CartItem');
 
 module.exports = app => {
-  app.patch('/api/users/:id/pay', requireLogin, async (req, res) => {
+  app.patch('/api/users/:id/pay', requireLogin, async(req, res) => {
+
+    console.log('PAYING IT FORWARD')
+
     const user = await User.findById(req.params.id);
 
     const cart = user.cart;
 
     // Update items for nonprofit
-    for (let cartItem in cart) {
-      const nonprofit = await Nonprofit.findById(item.nonprofitId);
+    for (let cartItemId in cart) {
+      const cartItem = cart[cartItemId]
+      console.log(cartItem)
+      const nonprofit = await Nonprofit.findById(cartItem.nonprofitId);
       const nonprofitItem = nonprofit.items[cartItem._id];
       const calculatedPrice = nonprofitItem.price * cartItem.amount;
       nonprofitItem.amtRaised += calculatedPrice;
@@ -37,7 +42,7 @@ module.exports = app => {
     res.send(user);
   });
 
-  app.patch('/api/users/:id/clear_cart', requireLogin, async (req, res) => {
+  app.patch('/api/users/:id/clear_cart', requireLogin, async(req, res) => {
     const user = await User.findById(req.params.id);
 
     user.cart = {};
