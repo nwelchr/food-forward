@@ -1,3 +1,3 @@
-export const FETCH_USER = 'fetch_user';
-export const FETCH_BLOGS = 'fetch_blogs';
-export const FETCH_BLOG = 'fetch_blog';
+export const RECEIVE_NONPROFIT_ITEMS = 'RECEIVE_NONPROFIT_ITEMS';
+export const RECEIVE_NONPROFIT_ITEM = 'RECEIVE_NONPROFIT_ITEM';
+export const DELETE_NONPROFIT_ITEM = 'DELETE_NONPROFIT_ITEM';

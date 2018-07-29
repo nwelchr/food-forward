@@ -14,7 +14,7 @@ class Company extends React.Component {
     this.state = {
       name: '',
       quota: '',
-      image_url: '', 
+      image_url: '',
       item_cost: ''
     };
   }
@@ -135,7 +135,7 @@ class Company extends React.Component {
            <input type='submit'/>
          </form>
 
-        <ItemIndex 
+        <ItemIndex
           items={this.props.items}
         />
 
