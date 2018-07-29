@@ -13,6 +13,13 @@ module.exports = app => {
     res.send(items);
   });
 
+  app.get('/api/nonprofits/:id/items', requireLogin, async (req, res) => {
+    console.log('nonprofito')
+    const nonprofit = await Nonprofit.findById(req.params.id);
+    const items = nonprofit.items;
+    res.send(items);
+  });
+
   app.post('/api/items', requireLogin, async (req, res) => {
     const item = req.body;
 

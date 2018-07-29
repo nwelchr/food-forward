@@ -1,6 +1,6 @@
 import React from 'react';
 import BuyerIndexContainer from "./BuyerIndexContainer";
-import CheckoutItem from "./CheckoutItem"; 
+import CheckoutItem from "./CheckoutItem";
 class Buyer extends React.Component {
     constructor(props) {
         super(props);
@@ -11,6 +11,7 @@ class Buyer extends React.Component {
     }
 
     render() {
+
         let item1 = {name: 'Shoes', price: '30.00', quantity: '3'};
         let item2 = {name: 'Banana', price: '10.00', quantity: '1'};
         let item3 = {name: 'Turkey', price: '400.00', quantity: '2'};
@@ -20,20 +21,19 @@ class Buyer extends React.Component {
         let items = [item1, item2, item3, item11, item22, item33].map(itm => {
             return <CheckoutItem name={itm.name} price={itm.price} quantity={itm.quantity} />;
         });
-
-        return (
-            <div>
-                <div className="buyer-nav">
-                    <div className="user-profile">
-                        User Email
-                    </div>
-                    <div className="cart-icon">
-                        <div className="cart-icon-circle">
-                            <div className="cart-icon-number">2</div>
-                        </div>
-                    </div>
-                    <div className="blur-filter"></div>
+        // let theCheckout =
+        // useremail – comapny donating to – shoping cart item
+        return (<div>
+            <div className="buyer-nav">
+              <div className="user-profile">User Email</div>
+              <div className="cart-icon">
+                <div className="cart-icon-circle">
+                  <div className="cart-icon-number">2</div>
                 </div>
+              </div>
+              <div className="blur-filter" />
+            </div>
+            <BuyerIndexContainer />
 
                 <div className="checkout-modal">
                     <ul className="checkout-ul">
