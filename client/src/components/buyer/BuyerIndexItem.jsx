@@ -5,7 +5,7 @@ class BuyerIndexItem extends React.Component {
         super(props);
         this.state = {
             inCart: !!this.props.cart,
-            amount: this.props.cart ? this.props.cart.amount : 0 
+            amount: 0 
         };
     }
 
@@ -17,17 +17,20 @@ class BuyerIndexItem extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let item = {
+            nonProfitId: "5b5d085560cd313ab45be5a9", 
+            amount: this.state.amount,
+            _id: this.props.item._id,
+        };
         if (this.state.inCart) {
-            this.props.updateCart()
+            item.amount = this.props.cart.amount + this.state.amount;
+            this.props.updateCartItem(this.props.user.id, item);
         } else {
-
+            this.props.addCartItem(this.props.user.id, item);
         }
     }
 
     render() {
-
-
-
         return(
             <li>
                 <ul>
@@ -49,7 +52,7 @@ class BuyerIndexItem extends React.Component {
                             
                             <input
                                 type="submit"
-                                value={this.state.inCart ? "Update Amount" : "Add Item"}
+                                value="Add Item"
                             />
                         </label>
                     </form></li>
