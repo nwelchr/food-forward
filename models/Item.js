@@ -4,10 +4,10 @@ const { Schema } = mongoose;
 const itemSchema = new Schema({
   name: String,
   image: String,
-  quota: Number,
-  price: Number,
+  quota: String,
+  price: String,
   amtRaised: {
-    type: Number,
+    type: String,
     default: 0
   },
   createdAt: {
