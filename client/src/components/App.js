@@ -21,10 +21,10 @@ class App extends Component {
             {/* <Header /> */}
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route path="/nonprofit_dashboard" component={CompanyContainer} />
+              <Route path="/nonprofit_dashboard" component={NonprofitDashboardContianer} />
 
               {/* TIFFANY AND JON JUST CHANGE THIS*/}
-              <Route path="/user_dashboard" component={UserDashboard} />
+              <Route path="/user_dashboard" component={BuyerContainer} />
               
             </Switch>
           </div>

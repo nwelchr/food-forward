@@ -110,25 +110,6 @@ class Company extends React.Component {
                 <i className="fa fa-camera" aria-hidden="true" />
               </div>
             </Dropzone>
-            <div>
-              <strong>OR</strong> paste an image URL:
-              <input
-                type="text"
-                value={this.state.inputImageUrl}
-                onChange={this.update('inputImageUrl')}
-              />
-            </div>
-            <div>
-              {this.state.uploadImageUrl === '' ? null : (
-                <div className="image-upload">
-                  <div>
-                    <img src={this.state.uploadImageUrl} />
-                  </div>
-                  {this.props.formType === 'Create A Product' ? (
-                    <div>{this.state.uploadedFile.name}</div>
-                  ) : null}
-                </div>
-              </Dropzone>
               <div>
                 {this.state.image_url === '' ? null : (
                   <div className="image-upload">
@@ -177,38 +158,6 @@ class Company extends React.Component {
               <input type="submit" />
             </form>
           </div>
-          <form className="itemForm" onSubmit={this.handleSubmit}>
-            <div className="ItemErros">Errors</div>
-            <label>
-              Item Name:
-              <input
-                className="search"
-                type="text"
-                onChange={this.update('name')}
-              />
-            </label>
-
-            <label>
-              Quota :
-              <input
-                className="amount"
-                type="number"
-                onCHange={this.update('quota')}
-              />
-            </label>
-
-            <label>
-              Item Cost :
-              <input
-                className="amount"
-                type="number"
-                onCHange={this.update('cost')}
-              />
-            </label>
-
-            <input type="submit" />
-          </form>
-        </div> 
         <ItemIndex items={this.props.items} />
       </div>
     );
