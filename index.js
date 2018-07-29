@@ -7,8 +7,6 @@ const keys = require('./config/keys');
 
 require('./models/User');
 require('./models/Nonprofit');
-require('./models/Blog');
-require('./models/Nonprofit');
 require('./models/Item');
 require('./services/passport');
 
@@ -31,9 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
-require('./routes/blogRoutes')(app);
-require('./routes/itemRoutes')(app);
-// require('./routes/blogRoutes')(app);
+require('./routes/nonprofitRoutes')(app);
 
 if (['production'].includes(process.env.NODE_ENV)) {
   app.use(express.static('client/build'));
