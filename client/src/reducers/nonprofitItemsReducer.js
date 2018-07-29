@@ -10,11 +10,11 @@ export default function(state = {}, action) {
       return action.payload;
     case RECEIVE_NONPROFIT_ITEM:
       const item = action.payload;
-      return { ...state, [item._id]: item };
+      return { ...state, [item.id]: item };
     case DELETE_NONPROFIT_ITEM:
       const deleteItem = action.payload;
       const newState = { ...state };
-      delete newState[deleteItem._id];
+      delete newState[deleteItem.id];
       return newState;
     default:
       return state;

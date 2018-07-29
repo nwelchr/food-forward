@@ -14,7 +14,7 @@ class Buyer extends React.Component {
             .toggleCheckout
             .bind(this);
 
-        this.changeStateTest = this.changeStateTest.bind(this); 
+        this.changeStateTest = this.changeStateTest.bind(this);
         this.goToList = this.goToList.bind(this);
     }
 
@@ -27,7 +27,7 @@ class Buyer extends React.Component {
     }
 
     componentWillUnmount() {
-        window.clearTimeout(); 
+        window.clearTimeout();
     }
 
     toggleCheckout() {
@@ -35,9 +35,9 @@ class Buyer extends React.Component {
         if (this.state.checkout) {
             const modal = document.getElementsByClassName("checkout-modal")[0];
             modal.classList.remove("checkout-modal-top");
-            setTimeout(this.changeStateTest, 800); 
+            setTimeout(this.changeStateTest, 800);
         }else{
-            this.setState({checkout: Boolean(!this.state.checkout)}); 
+            this.setState({checkout: Boolean(!this.state.checkout)});
         }
     }
 
@@ -57,10 +57,14 @@ class Buyer extends React.Component {
 
         const bgModal = this.state.checkout
             ? <div onClick={this.toggleCheckout} className="bg-modal"></div>
-            : ''; 
+            : '';
 
         const name = this.props.user
             ? this.props.user.displayName
+            : '';
+
+        const logout = this.props.user
+            ? 'Logout'
             : '';
 
         const cartCount = Object
@@ -79,11 +83,17 @@ class Buyer extends React.Component {
             <div>
                 <div className="buyer-nav">
                     <div className="user-profile">{name}</div>
+<<<<<<< HEAD
                     <div className="rightbuyernav">
                         <div className="list-icon" onClick={this.goToList}></div>
                         <div onClick={this.toggleCheckout} className="cart-icon">
                             {icon}
                     </div>
+=======
+                    <button className="change-item-button add"><a className="logout-btn" href={'/auth/logout'}> Logout</a> </button>
+                    <div onClick={this.toggleCheckout} className="cart-icon">
+                        {icon}
+>>>>>>> master
                     </div>
                 </div>
                 {renderModal}
