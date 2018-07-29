@@ -2,6 +2,7 @@
   background: linear-gradient(-45deg, #23a6d5, #20d2ab);
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   user-select: none;
 }
 
@@ -297,4 +298,32 @@
 .change-item-button:active {
   transform: scale(0.97);
   border: 0;
+}
+
+.toggle-options button {
+  border-radius: 15px;
+  min-width: 120px;
+  opacity: 0.8;
+  max-height: 60px;
+}
+
+.toggle-options .selected {
+  opacity: 1;
+}
+
+.toggle-options {
+  display: flex;
+  width: 78%;
+  justify-content: space-between;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.main-content {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
