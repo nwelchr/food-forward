@@ -26,11 +26,7 @@ module.exports = app => {
       user.cart[newItem._id] = newItem;
       await user.save();
 
-<<<<<<< HEAD
       res.send(user.cart);
-=======
-      res.send(newItem);
->>>>>>> master
     } catch (err) {
       res.send(400, err);
     }
