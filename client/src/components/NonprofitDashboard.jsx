@@ -181,7 +181,54 @@ class NonprofitDashboard extends React.Component {
                   <div>{this.state.uploadedFile.name}</div>
                 ) : null}
               </div>
-            )}
+            </Dropzone>
+              <div>
+                {this.state.image_url === '' ? null : (
+                  <div className="image-upload">
+                    <div>
+                      <img src={this.state.image_url} />
+                    </div>
+                    {this.props.formType === 'Create A Product' ? (
+                      <div>{this.state.uploadedFile.name}</div>
+                    ) : null}
+                  </div>
+                )}
+              </div>
+            </div>
+            <form className="itemForm" onSubmit={this.handleSubmit}>
+              <div className="ItemErros">Errors</div>
+              <label>
+                {/* Item Name: */}
+                <input
+                  className="search"
+                  type="text"
+                  placeholder="Item Name"
+                  onChange={this.update('name')}
+                />
+              </label>
+
+              <label>
+                {/* Quota : */}
+                <input
+                  className="amount"
+                  type="number"
+                  placeholder="Quota"
+                  onCHange={this.update('quota')}
+                />
+              </label>
+
+              <label>
+                {/* Item Cost : */}
+                <input
+                  className="amount"
+                  type="number"
+                  placeholder="Item Cost"
+                  onCHange={this.update('item_cost')}
+                />
+              </label>
+
+              <input type="submit" />
+            </form>
           </div>
           <form className="itemForm" onSubmit={this.handleSubmit}>
             <div className="ItemErros">Errors</div>
