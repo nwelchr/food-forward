@@ -22,7 +22,11 @@ class CheckoutModal extends React.Component {
     return Object
       .values(this.props.cart)
       .map(itm => {
-        return <CheckoutItem name={itm.name} price={itm.price} quantity={itm.quantity}/>;
+        return <CheckoutItem
+          name={itm.name}
+          price={itm.price}
+          amount={itm.amount}
+          image={itm.image}/>;
       });
   }
 
