@@ -5,6 +5,7 @@ import Company from './company';
 
 const mapStateToProps = state => ({
   // items: state.items,
+  items: {1: {id: 1, name: "banana", cost: 20.00, quota: 500}}
 });
 
 const mapDispatchToProps = dispatch => ({
