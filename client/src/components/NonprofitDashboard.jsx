@@ -54,7 +54,8 @@ class NonprofitDashboard extends React.Component {
             quota: '',
             updateItemId: '',
             modalType: '',
-            previewImages: ''
+            previewImages: '',
+            sortType: ''
           });
         });
       }
@@ -66,7 +67,8 @@ class NonprofitDashboard extends React.Component {
           price: '',
           quota: '',
           modalType: '',
-          previewImages: ''
+          previewImages: '',
+          sortType: ''
         })
       );
     }
@@ -165,6 +167,13 @@ class NonprofitDashboard extends React.Component {
     });
   }
 
+  updateSort(field) {
+    return e => {
+      e.preventDefault();
+      this.setState({ sortType: field });
+    };
+  }
+
   renderModal() {
     return (
       <div className="item-modal-screen">
@@ -261,6 +270,7 @@ class NonprofitDashboard extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="body-wrapper">
         <div className="non-profit-dashboard">
@@ -280,12 +290,73 @@ class NonprofitDashboard extends React.Component {
             </div>
           </nav>
 
-          <ItemIndex
-            deleteNonprofitItem={this.props.deleteNonprofitItem}
-            openUpdateModal={this.openUpdateModal}
-            items={this.props.items}
-          />
+          <main className="main-content">
+            <section className="toggle-options">
+              <button
+                onClick={this.updateSort('time-lh')}
+                className={`change-item-button add ${
+                  this.state.sortType === 'time-lh' ? 'selected' : ''
+                }`}>
+                Time ↑
+              </button>
+              <button
+                onClick={this.updateSort('time-hl')}
+                className={`change-item-button add ${
+                  this.state.sortType === 'time-hl' ? 'selected' : ''
+                }`}>
+                Time ↓
+              </button>
+              <button
+                onClick={this.updateSort('abc-lh')}
+                className={`change-item-button add ${
+                  this.state.sortType === 'abc-lh' ? 'selected' : ''
+                }`}>
+                ABC ↑
+              </button>
+              <button
+                onClick={this.updateSort('abc-hl')}
+                className={`change-item-button add ${
+                  this.state.sortType === 'abc-hl' ? 'selected' : ''
+                }`}>
+                ABC ↓
+              </button>
+              <button
+                onClick={this.updateSort('quota-lh')}
+                className={`change-item-button add ${
+                  this.state.sortType === 'quota-lh' ? 'selected' : ''
+                }`}>
+                Quota ↑
+              </button>
+              <button
+                onClick={this.updateSort('quota-hl')}
+                className={`change-item-button add ${
+                  this.state.sortType === 'quota-hl' ? 'selected' : ''
+                }`}>
+                Quota ↓
+              </button>
+              <button
+                onClick={this.updateSort('remaining-lh')}
+                className={`change-item-button add ${
+                  this.state.sortType === 'remaining-lh' ? 'selected' : ''
+                }`}>
+                Remaining ↑
+              </button>
+              <button
+                onClick={this.updateSort('remaining-hl')}
+                className={`change-item-button add ${
+                  this.state.sortType === 'remaining-hl' ? 'selected' : ''
+                }`}>
+                Remaining ↓
+              </button>
+            </section>
 
+            <ItemIndex
+              sortType={this.state.sortType}
+              deleteNonprofitItem={this.props.deleteNonprofitItem}
+              openUpdateModal={this.openUpdateModal}
+              items={this.props.items}
+            />
+          </main>
           {this.state.modalType && this.renderModal()}
         </div>
       </div>
