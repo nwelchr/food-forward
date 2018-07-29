@@ -83,17 +83,11 @@ class Buyer extends React.Component {
             <div>
                 <div className="buyer-nav">
                     <div className="user-profile">{name}</div>
-<<<<<<< HEAD
                     <div className="rightbuyernav">
                         <div className="list-icon" onClick={this.goToList}></div>
                         <div onClick={this.toggleCheckout} className="cart-icon">
                             {icon}
                     </div>
-=======
-                    <button className="change-item-button add"><a className="logout-btn" href={'/auth/logout'}> Logout</a> </button>
-                    <div onClick={this.toggleCheckout} className="cart-icon">
-                        {icon}
->>>>>>> master
                     </div>
                 </div>
                 {renderModal}
