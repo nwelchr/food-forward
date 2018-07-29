@@ -21,16 +21,20 @@ module.exports = app => {
 
     const user = await User.findById(req.params.id);
 
-    const newItem = new CartItem({nonprofitId, amount, _id});
-    const fullItem = await makeFullItem(newItem)
+    // const newItem = new CartItem({nonprofitId, amount, _id});
+    const fullItem = await makeFullItem({nonprofitId, amount, _id})
 
-    console.log('post post', user, newItem)
+    console.log('post post', user, fullItem)
     try {
+      console.log('test')
       const newCart = {
         ...user.cart
       }
-      newCart[newItem._id] = newItem;
-      user.cart = fullItem;
+      console.log('test2', newCart)
+
+      newCart[fullItem._id] = fullItem;
+      user.cart = newCart;
+      console.log('newcart', newCart)
       await user.save();
       res.send(user.cart);
     } catch (err) {
@@ -46,14 +50,17 @@ module.exports = app => {
     const user = await User.findById(req.params.id);
 
     const newItem = new CartItem({nonprofitId, amount, _id});
-    const fullItem = await makeFullItem(newItem)
+    const fullItem = await makeFullItem({nonprofitId, amount, _id})
     try {
       const newCart = {
         ...user.cart
       }
       newCart[newItem._id] = fullItem;
       user.cart = newCart;
+      console.log('user', user)
       await user.save();
+
+      console
       res.send(user.cart);
     } catch (err) {
       res.send(400, err);
@@ -81,15 +88,19 @@ module.exports = app => {
   });
 };
 
-async function makeFullItem(item) {
-  const nP = await Nonprofit.findById(item.nonprofitId)
-  const nPItem = nP.items[item._id]
-  const fullItem = {
-    ...item
-  }
-
-  fullItem.image = nPItem.image
-  fullItem.price = nPItem.price
-
+async function makeFullItem({nonprofitId, _id, amount}) {
+  console.log("MAKE FULL ITEM!!!!!!!!")
+  console.log('before')
+  const nP = await Nonprofit.findById(nonprofitId)
+  const nPItem = nP.items[_id]
+  const fullItem = new CartItem({
+    nonprofitId,
+    _id,
+    amount,
+    image: nPItem.image,
+    price: nPItem.price,
+    name: nPItem.name
+  })
+  console.log('after', fullItem)
   return fullItem
 }
