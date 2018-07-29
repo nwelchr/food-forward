@@ -6,7 +6,7 @@ import {
   deleteNonprofitItem
 } from '../actions/nonprofit';
 
-import Company from './company';
+import NonprofitDashboard from './NonprofitDashboard';
 
 const mapStateToProps = state => {
   const userId = state.auth ? state.auth.id : null;
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Company);
+)(NonprofitDashboard);

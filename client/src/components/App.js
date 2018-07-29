@@ -4,11 +4,9 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
-
-
 import Landing from './Landing.jsx';
-import CompanyContainer from './company_container';
-import BuyerContainer from "./buyer/BuyerContainer";
+import NonprofitDashboardContianer from './NonprofitDashboardContainer';
+import BuyerContainer from './buyer/BuyerContainer';
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +20,12 @@ class App extends Component {
           <div>
             {/* <Header /> */}
             <Switch>
-              <Route path="/nonprofit_dashboard" component={CompanyContainer} />
+              <Route
+                path="/nonprofit_dashboard"
+                component={NonprofitDashboardContianer}
+              />
+
+              {/* TIFFANY AND JON JUST CHANGE THIS*/}
               <Route path="/user_dashboard" component={BuyerContainer} />
               <Route path="/" component={Landing} />
             </Switch>
