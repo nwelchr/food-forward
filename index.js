@@ -6,11 +6,17 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
 require('./models/User');
+require('./models/Nonprofit');
 require('./models/Blog');
+require('./models/Nonprofit');
+require('./models/Item');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI, { useMongoClient: true });
+mongoose.connect(
+  keys.mongoURI,
+  { useMongoClient: true }
+);
 
 const app = express();
 
@@ -26,6 +32,8 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/blogRoutes')(app);
+require('./routes/itemRoutes')(app);
+// require('./routes/blogRoutes')(app);
 
 if (['production'].includes(process.env.NODE_ENV)) {
   app.use(express.static('client/build'));
