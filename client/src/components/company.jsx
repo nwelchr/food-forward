@@ -1,4 +1,6 @@
 import React from 'react';
+import Dropzone from "react-dropzone";
+import request from "superagent";
 
 import itemsIndexComponent from './itemIndex';
 const CLOUDINARY_UPLOAD_PRESET = "zfgcp1tk";
@@ -17,9 +19,9 @@ class Company extends React.Component {
     };
   }
 
-  componentDidMount(){
-    this.props.fetchItems();
-  }
+  // componentDidMount(){
+  //   this.props.fetchItems();
+  // }
 
   handleSubmit(e){
     e.preventDefault();
@@ -62,19 +64,18 @@ class Company extends React.Component {
 
 
   render(){
-    if (Object.keys(this.props.items).length === 0) {
-      return (
-     <p>Loading...</p>
-     );
-   }
-   const featuredItems = Object.values(this.props.items);
+  //   if (Object.keys(this.props.items).length === 0) {
+  //     return (
+  //    <p>Loading...</p>
+  //    );
+  //  }
+  //  const featuredItems = Object.values(this.props.items);
     return(
       <div>
-       <nav>
-         <div> Company Name </div>
-         <div>  + </div>
-      </nav>
-         <div className="product-contianer">
+        <nav>
+          <div> Company Name </div>
+          <div>  + </div>
+        </nav>
           <div className="product-image-upload">
             <h1>Photo:</h1>
             <Dropzone
