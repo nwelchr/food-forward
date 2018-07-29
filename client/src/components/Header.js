@@ -32,8 +32,7 @@ class Header extends Component {
           <Link
             to={this.props.auth ? '/blogs' : '/'}
             className="left brand-logo"
-            style={{ marginLeft: '10px' }}
-          >
+            style={{ marginLeft: '10px' }}>
             Blogster
           </Link>
           <ul className="right">{this.renderContent()}</ul>

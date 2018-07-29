@@ -1,3 +1,4 @@
+import './reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -12,7 +13,7 @@ import '../src/styles/root.css';
 
 window.axios = axios;
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <Provider store={store}>
