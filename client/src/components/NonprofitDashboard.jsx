@@ -274,7 +274,7 @@ class NonprofitDashboard extends React.Component {
       <div className="body-wrapper">
         <div className="non-profit-dashboard">
           <nav className="non-profit-nav">
-            <p>Hello, {this.props.displayName}!</p>
+            <p>St. Anthony's</p>
             <div className="button-nav">
               <button className="change-item-button add">
                 <a className="logout-btn" href="/auth/logout">

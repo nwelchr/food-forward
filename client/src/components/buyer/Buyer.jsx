@@ -77,7 +77,7 @@ class Buyer extends React.Component {
       return (
           <div>
               <div className="buyer-nav">
-                  <div className="user-profile">Hi, {name.split(' ')[0]}!</div>
+                  <div className="user-profile">St. Anthony's</div>
 
                   <div className="rightbuyernav">
                         <div className="list-icon" onClick={this.goToList}></div>
