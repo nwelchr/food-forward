@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
-import Landing from './Landing';
+import Landing from './Landing.jsx';
 import NonprofitDashboardContianer from './NonprofitDashboardContainer';
-import UserDashboard from './UserDashboard';
+import BuyerContainer from './buyer/BuyerContainer';
 
 class App extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class App extends Component {
       <div className="container">
         <BrowserRouter>
           <div>
-            <Header />
+            {/* <Header /> */}
             <Switch>
               <Route
                 path="/nonprofit_dashboard"
@@ -26,7 +26,7 @@ class App extends Component {
               />
 
               {/* TIFFANY AND JON JUST CHANGE THIS*/}
-              <Route path="/user_dashboard" component={UserDashboard} />
+              <Route path="/user_dashboard" component={BuyerContainer} />
               <Route path="/" component={Landing} />
             </Switch>
           </div>
