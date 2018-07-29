@@ -17,6 +17,20 @@ class CheckoutModal extends React.Component {
       .bind(this);
   }
 
+  componentDidMount() {
+    // 
+    setTimeout(function() {
+      const modal = document.getElementsByClassName("checkout-modal")[0];
+      modal.classList.add("checkout-modal-top");
+    }, 50); 
+    // this.modalTop(); 
+  }
+
+  componentWillUnmount() {
+    window.clearTimeout(); 
+  }
+
+
   generateItems() {
     console.log("GI", this.props);
     return Object
@@ -31,7 +45,6 @@ class CheckoutModal extends React.Component {
   }
 
   checkout() {
-
     this
       .props
       .checkout(this.props.user._id);
@@ -39,18 +52,16 @@ class CheckoutModal extends React.Component {
 
   render() {
     const items = this.generateItems();
-    return (
-      <div className="checkout-modal">
-        <ul className="checkout-ul">
-          {items}
-        </ul>
+    return <div className="checkout-modal">
+        <ul className="checkout-ul">{items}</ul>
         <div className="checkout-total">
           <p>Total</p>
           <p>$300.00</p>
         </div>
-        <div onClick={this.checkout} className="checkout-button">Checkout</div>
-      </div>
-    );
+        <div onClick={this.checkout} className="checkout-button">
+          Checkout
+        </div>
+      </div>;
   }
 }
 
