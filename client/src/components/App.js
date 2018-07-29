@@ -9,6 +9,7 @@ import Dashboard from './Dashboard';
 import BlogNew from './blogs/BlogNew';
 import BlogShow from './blogs/BlogShow';
 import CompanyContainer from './company_container';
+import BuyerContainer from "./buyer/BuyerContainer";
 
 class App extends Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
               <Route path="/nonprofit_dashboard" component={CompanyContainer} />
 
               {/* TIFFANY AND JON JUST CHANGE THIS*/}
-              <Route path="/user_dashboard" component={UserDashboard} />
+              <Route path="/user_dashboard" component={BuyerContainer} />
 
               <Route path="/blogs/new" component={BlogNew} />
               <Route exact path="/blogs/:_id" component={BlogShow} />

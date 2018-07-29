@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { fetchNonprofitItems, fetchCart, addCartItem, updateCartItem } from "../../actions/index";
-import Buyer from './Buyer';
+import { fetchNonprofitItems, addCartItem, updateCartItem } from "../../actions/index";
+import BuyerIndex from './BuyerIndex';
 
 const mapStateToProps = (state, ownProps) => ({
-    cart: state.cart
+    cart: state.cart,
+    items: state.items
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchNonprofitItems: id => dispatch(fetchNonprofitItems(id)), 
-    fetchCart: id => dispatch(fetchCart(id)), 
     addCartItem: (id, item) => dispatch(addCartItem(id, item)), 
     updateCartItem: (id, item) => dispatch(updateCartItem(id, item))
 });
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Buyer);
+)(BuyerIndex);

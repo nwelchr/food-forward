@@ -1,15 +1,19 @@
 import React from 'react';
-import BuyerItem from "./BuyerItem";
+import BuyerIndexContainer from "./BuyerIndexContainer";
 
 class Buyer extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.fetchCart();
+    }
+
     render() {
         return(
             <div>
-                
+                HELLO
             </div>
         );
     }

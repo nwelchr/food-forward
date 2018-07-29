@@ -1,16 +1,21 @@
 import React from "react";
 import BuyerIndexItem from "./BuyerIndexItem";
 
-class BuyerItem extends React.Component {
+class BuyerIndex extends React.Component {
     constructor(props) {
         super (props);
+    }
+
+    componentDidMount() {
+        this.props.fetchNonprofitItems();
     }
 
     render() {
         let items = Object.values(this.props.items).map((item) => {
             return (
                 <BuyerIndexItem key={`item-${item.id}`}
-                item={item} />
+                item={item}
+                cart={this.props.cart[item.id]} />
             );
         });
 
@@ -24,4 +29,4 @@ class BuyerItem extends React.Component {
     }
 }
 
-export default BuyerItem;
+export default BuyerIndex;
