@@ -16,12 +16,29 @@
     font-size: 2em; 
 }
 
+.rightbuyernav {
+    display: flex; 
+    align-items: center;
+    flex-direction: row;
+
+}
+
 .cart-icon {
     position: relative;
     width: 60px;
     height: 60px;
     margin: 40px 60px;
     background: url(http://simpleicon.com/wp-content/uploads/Shopping-Cart-9.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer; 
+}
+
+.list-icon {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: url(http://res.cloudinary.com/dwanjkcku/image/upload/c_scale,w_60/v1532879617/ingredients-list.png);
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer; 
@@ -50,8 +67,8 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .cart-icon {
-        margin: 0px 25px; 
+    .cart-icon, .list-icon {
+        margin: 0px 5px; 
     }
     .user-profile {
         margin: 20px 40px; 
