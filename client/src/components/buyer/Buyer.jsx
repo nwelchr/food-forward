@@ -71,7 +71,6 @@ class Buyer extends React.Component {
     // let theCheckout = useremail – comapny donating to – shoping cart item
     return (
       <div>
-        <div>
           <div className="buyer-nav">
             <div className="user-profile">{name}</div>
             <button className="change-item-button add">
@@ -90,10 +89,7 @@ class Buyer extends React.Component {
           {bgModal}
           <BuyerIndexContainer />
         </div>
-        {renderModal}
-        {bgModal}
-        <BuyerIndexContainer />
-      </div>
+
     );
   }
 }
