@@ -1,7 +1,8 @@
 import {
   RECEIVE_NONPROFIT_ITEMS,
   RECEIVE_NONPROFIT_ITEM,
-  DELETE_NONPROFIT_ITEM} from '../actions/types';
+  DELETE_NONPROFIT_ITEM
+} from '../actions/types';
 
 export default function(state = {}, action) {
   switch (action.type) {
@@ -12,7 +13,7 @@ export default function(state = {}, action) {
       return { ...state, [item.id]: item };
     case DELETE_NONPROFIT_ITEM:
       const deleteItem = action.payload;
-      const newState = {...state};
+      const newState = { ...state };
       delete newState[deleteItem.id];
       return newState;
     default:
